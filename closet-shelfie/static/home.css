@@ -5,18 +5,38 @@ body{
   text-align: center;
 }
 
+img{
+  margin-top: 175px;
+  margin-bottom: 70px;
+}
+
 #login{
-  color: rgb(40,44,52);
-  font-size: 60px;
+  border-radius: 3%;
+  color: rgb(0,0,0);
+  font-size: 20px;
   font-family: 'Yanone Kaffeesatz', sans-serif;
   font-weight: 200;
-  text-align: left;
+  text-align: center;
+  padding:15px;
+  background-color: rgba(255, 255, 255, 0.5);
+  width:275px;
+  margin-left: 250px;
+  margin-bottom: 120px;
+  margin-top: 20px;
+  position: absolute;
 }
 
 #register{
-  color: rgb(40,44,52);
-  font-size: 60px;
+  position: relative;
+  border-radius: 3%;
+  color: rgb(0,0,0);
+  font-size: 20px;
   font-family: 'Yanone Kaffeesatz', sans-serif;
   font-weight: 200;
-  text-align: right;
+  text-align: center;
+  padding:15px;
+  margin-left: 750px;
+  margin-bottom: 130px;
+  background-color: rgba(255, 255, 255, 0.5);
+  width:425px;
 }

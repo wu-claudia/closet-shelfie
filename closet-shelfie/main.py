@@ -42,15 +42,23 @@ class User(ndb.Model):
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
+        template=env.get_template('main.html')
+        login_url = users.create_login_url('/')
+        variables={'login_url':login_url}
+        self.response.write(template.render(variables))
+        if user:
+            self.redirect('/home')
+
+class HomeHandler(webapp2.RequestHandler):
+    def get(self):
+        user = users.get_current_user()
         template=env.get_template('home.html')
         variables = {'user':user}
-        self.response.write(template.render())
+        self.response.write(template.render(variables))
+        logout_url = users.create_logout_url('/home')
+        self.response.write('<b><p><a href="%s" id="log">Log Out</a></p></b>' % logout_url)
         if user is None:
-            login_url = users.create_login_url('/')
-            self.response.write('<b><a href="%s" id="log">Log In</a></b>' % login_url)
-        else: #If user is logged in
-            logout_url = users.create_logout_url('/')
-            self.response.write('<b><p><a href="%s" id="log">Log Out</a></p></b>' % logout_url)
+            self.redirect('/')
     #def post(self):
         # username=self.request.get("usernamesignup")
         # password=self.request.get("passwordsignup")
@@ -99,6 +107,7 @@ class AboutHandler(webapp2.RequestHandler):
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
+    ('/home', HomeHandler),
     ('/custom', CustomizeHandler),
     ('/upload', UploadHandler),
     ('/outfit', OutfitHandler),

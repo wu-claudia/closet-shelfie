@@ -16,8 +16,12 @@
 #
 import webapp2
 import jinja2
+from google.appengine.ext import ndb
 
 env=jinja2.Environment(loader=jinja2.FileSystemLoader('templates'))
+
+class Clothes(ndb.Model):
+
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
@@ -51,7 +55,7 @@ class AboutHandler(webapp2.RequestHandler):
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
-    ('/custom', CustomHandler),
+    ('/custom', CustomizeHandler),
     ('/upload', UploadHandler),
     ('/outfit', OutfitHandler),
     ('/calendar', CalendarHandler),

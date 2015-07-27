@@ -1,0 +1,22 @@
+body{
+  background: url('sky2.gif');
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+}
+
+#login{
+  color: rgb(40,44,52);
+  font-size: 60px;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-weight: 200;
+  text-align: left;
+}
+
+#register{
+  color: rgb(40,44,52);
+  font-size: 60px;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-weight: 200;
+  text-align: right;
+}

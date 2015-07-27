@@ -26,7 +26,7 @@ class MainHandler(webapp2.RequestHandler):
 
 class CustomizeHandler(webapp2.RequestHandler):
     def get(self):
-        template=env.get_template('custom.html')
+        template=env.get_template('customize.html')
         self.response.write(template.render())
 
 class UploadHandler(webapp2.RequestHandler):

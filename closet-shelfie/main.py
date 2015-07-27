@@ -21,7 +21,7 @@ env=jinja2.Environment(loader=jinja2.FileSystemLoader('templates'))
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        template=env.get_template('main.html')
+        template=env.get_template('home.html')
         self.response.write(template.render())
 
 class CustomizeHandler(webapp2.RequestHandler):
@@ -44,6 +44,16 @@ class CalendarHandler(webapp2.RequestHandler):
         template=env.get_template('calendar.html')
         self.response.write(template.render())
 
+class AboutHandler(webapp2.RequestHandler):
+    def get(self):
+        template=env.get_template('about.html')
+        self.response.write(template.render())
+
 app = webapp2.WSGIApplication([
-    ('/', MainHandler)
+    ('/', MainHandler),
+    ('/custom', CustomHandler),
+    ('/upload', UploadHandler),
+    ('/outfit', OutfitHandler),
+    ('/calendar', CalendarHandler),
+    ('/about', AboutHandler),
 ], debug=True)

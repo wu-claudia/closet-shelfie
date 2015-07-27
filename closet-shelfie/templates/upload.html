@@ -1,5 +1,14 @@
 <html>
+  <head>
+    <title>Upload Pictures</title>
+  </head>
   <body>
-    
+    <form name = "input" action = "/upload" method = "post" enctype="multipart/form-data">
+      Name: <input type = "text" name = "name">
+      Color: <input type = "text" name = "color">
+      Part: <input type = "text" name = "part">
+      Image: <input type = "file" name = "image">
+      <button>Upload Picture</button>
+    </form>
   </body>
 </html>

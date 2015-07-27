@@ -21,7 +21,17 @@ from google.appengine.ext import ndb
 env=jinja2.Environment(loader=jinja2.FileSystemLoader('templates'))
 
 class Clothes(ndb.Model):
+    color=ndb.StringProperty(required=True)
+    part=ndb.StringProperty(required=True)
+    file_name=ndb.StringProperty(indexed=False)
+    image=ndb.BlobProperty(required=True)
+    #outfit_key=ndb.KeyProperty(kind=Outfit)
 
+# class Outfit(ndb.Model):
+#     name=ndb.StringProperty()
+#     reminder=ndb.BooleanProperty()
+#     date=ndb.DateTimeProperty()
+#     clothes_key=ndb.KeyProperty(kind=Outfit)
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
@@ -37,6 +47,14 @@ class UploadHandler(webapp2.RequestHandler):
     def get(self):
         template=env.get_template('upload.html')
         self.response.write(template.render())
+
+    def post(self):
+        imagedata = Clothes(color=self.request.get('color'),
+                            file_name = str(self.request.get('name')),
+                            part=self.request.get('part'),
+                            image = self.request.get('image'))
+        imagedata.put()
+        return self.redirect('/upload')
 
 class OutfitHandler(webapp2.RequestHandler):
     def get(self):

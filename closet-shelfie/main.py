@@ -17,6 +17,8 @@
 import webapp2
 import jinja2
 from google.appengine.ext import ndb
+from google.appengine.api import users
+import logging
 
 env=jinja2.Environment(loader=jinja2.FileSystemLoader('templates'))
 
@@ -25,7 +27,11 @@ class Clothes(ndb.Model):
     part=ndb.StringProperty(required=True)
     file_name=ndb.StringProperty(indexed=False)
     image=ndb.BlobProperty(required=True)
-    #outfit_key=ndb.KeyProperty(kind=Outfit)
+
+class User(ndb.Model):
+    username=ndb.StringProperty(required=True)
+    #email=ndb.EmailProperty(required=True)
+    password=ndb.StringProperty(required=True)
 
 # class Outfit(ndb.Model):
 #     name=ndb.StringProperty()
@@ -35,8 +41,28 @@ class Clothes(ndb.Model):
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
+        user = users.get_current_user()
         template=env.get_template('home.html')
+        variables = {'user':user}
         self.response.write(template.render())
+        if user is None:
+            login_url = users.create_login_url('/')
+            self.response.write('<b><a href="%s" id="log">Log In</a></b>' % login_url)
+        else: #If user is logged in
+            logout_url = users.create_logout_url('/')
+            self.response.write('<b><p><a href="%s" id="log">Log Out</a></p></b>' % logout_url)
+    #def post(self):
+        # username=self.request.get("usernamesignup")
+        # password=self.request.get("passwordsignup")
+        # user = User(username=username,
+        #             password=password)
+        # user_key=ndb.Key(User, user).fetch()
+        # button_val = self.request.get('Sign up')
+        # logging.error("Button value: ", button_val)
+        # if user_key:
+        #     return self.redirect('/custom')
+        #
+        # return self.redirect('/')
 
 class CustomizeHandler(webapp2.RequestHandler):
     def get(self):

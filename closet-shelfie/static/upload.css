@@ -2,7 +2,7 @@
 header{
   border-radius: 3%;
   height:250px;
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgba(255, 255, 255, 0.85);
   text-align: center;
   color: rgb(0,0,0);
 }
@@ -51,7 +51,7 @@ form{
   padding-top: 20px;
   width:750px;
   height:750px;
-  background-color: rgba(255, 255, 255, 0.85);
+  background-color: rgba(255, 255, 255, 0.95);
 }
 
 div{

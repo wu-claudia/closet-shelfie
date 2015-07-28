@@ -17,7 +17,7 @@ body{
   margin-right: auto;
   border-radius: 3%;
   color: rgb(0,0,0);
-  font-size: 20px;
+  font-size: 30px;
   font-family: 'Yanone Kaffeesatz', sans-serif;
   font-weight: 200;
   text-align: center;
@@ -25,11 +25,19 @@ body{
   background-color: rgba(255, 255, 255, 0.5);
 }
 
-#about{
-  /*position: relative;
-  padding:30px;
-  border-radius: 3%;
-  width:50;
-  height:50;
-  background-color: rgba(255, 255, 255, 0.55);*/
+button{
+  margin-top: 30px;
+  margin-left: 10px;
+  margin-bottom: 30px;
+  width:150px;
+  height:150px;
+  font-size: 20px;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-weight: 200;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 1em;
+}
+
+button:hover{
+  background-color: rgba(255, 255, 255, 0.75);
 }

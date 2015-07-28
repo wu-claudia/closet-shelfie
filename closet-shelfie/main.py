@@ -90,16 +90,10 @@ class CustomizeHandler(webapp2.RequestHandler):
 class ImageHandler(webapp2.RequestHandler):
     def get(self):
         key_id=self.request.get('key')
-        key_key=ndb.Key(urlsafe=key_id)
-        parts=datastore.LookupRequest()
-        parts.key.extend([key_key])
-        resp = self.datastore.lookup(parts)
-        if len(resp.missing) is 1:
-            raise Exception('entity not found')
-        employee = resp.found[0].entity
-        if (key_key and parts):
+        item=ndb.Key(urlsafe=key_id).get()
+        if (item and key_id):
             self.response.headers['Content-Type'] = 'image/jpeg'
-            self.response.out.write(parts)
+            self.response.out.write(item.image)
         else:
             self.redirect('/static/noimage.jpg')
 

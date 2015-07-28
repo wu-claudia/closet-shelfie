@@ -1,0 +1,55 @@
+div {
+  height: 100%;
+}
+#right {
+  float:right;
+}
+#left{
+  float:left;
+}
+
+h1 {
+  text-align: center;
+  box-shadow: 50px 10px 10px #888888;
+  background-image: url(http://img15.deviantart.net/2f29/i/2012/116/7/b/city_background_by_osaelf-d4xobh8.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+}
+h2 {
+  font-size: 100px;
+  box-shadow: 50px 10px 10px #888888;
+  background-image: url(http://img15.deviantart.net/2f29/i/2012/116/7/b/city_background_by_osaelf-d4xobh8.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+}
+h3 {
+  font-size: 50px;
+  text-align: center;
+}
+h4 {
+  font-size: 50px;
+
+  box-shadow: 50px 10px 10px #888888;
+  }
+html{
+  background-image: url(http://cdn7.facegfx.com/static/vector/2013/7/9/facegfx-vector-the-city-silhouette-vector.jpg);
+  background-repeat: no-repeat;
+  background-size: 3000px;
+}
+.tops, .bottoms, .shoes {
+  font-size: 50px;
+  box-shadow: 50px 10px 10px #888888;
+}
+
+
+
+
+
+
+
+
+
+
+}

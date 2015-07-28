@@ -29,7 +29,7 @@ class Clothes(ndb.Model):
     image=ndb.BlobProperty(required=True)
 
 class User(ndb.Model):
-    email=ndb.EmailProperty(required=True)
+    #email=ndb.EmailProperty(required=True)
     reminder=ndb.BooleanProperty()
 
 # class Outfit(ndb.Model):

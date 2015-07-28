@@ -18,6 +18,7 @@ import webapp2
 import jinja2
 from google.appengine.ext import ndb
 from google.appengine.api import users
+from google.appengine.api import images
 import logging
 
 env=jinja2.Environment(loader=jinja2.FileSystemLoader('templates'))
@@ -75,6 +76,9 @@ class CustomizeHandler(webapp2.RequestHandler):
     def get(self):
         # <img src='mageit?key={{account_key}}'
         tops=Clothes.query(Clothes.part=="Top").fetch()
+        #top_urls=[]
+        #for top in tops:
+        #    top_urls.append(images.get_serving_url(top))
         bottoms=Clothes.query(Clothes.part=="Bottom").fetch()
         outerwear=Clothes.query(Clothes.part=="Outerwear").fetch()
         accessory=Clothes.query(Clothes.part=="Accessory").fetch()
@@ -103,8 +107,10 @@ class OutfitHandler(webapp2.RequestHandler):
 
 class CalendarHandler(webapp2.RequestHandler):
     def get(self):
+        user=users.get_current_user()
+        variables={'user':user}
         template=env.get_template('calendar.html')
-        self.response.write(template.render())
+        self.response.write(template.render(variables))
 
 class AboutHandler(webapp2.RequestHandler):
     def get(self):

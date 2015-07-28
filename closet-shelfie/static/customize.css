@@ -72,7 +72,7 @@ h3 {
 h4 {
   font-family: 'Yanone Kaffeesatz', sans-serif;
   font-weight: 200;
-  font-size: 50px;
+  font-size: 75px;
   background-image: url(http://img15.deviantart.net/2f29/i/2012/116/7/b/city_background_by_osaelf-d4xobh8.jpg);
   background-repeat: no-repeat;
   background-size: cover;
@@ -103,7 +103,7 @@ body{
   padding-top: 20px;
   width:49%;
   height:1500px;
-  background-color: rgba(255, 255, 255, 0.90);
+  background-color: rgba(255, 255, 255, 0.20);
 }
 
 #right{

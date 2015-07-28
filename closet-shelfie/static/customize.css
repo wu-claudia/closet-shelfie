@@ -77,13 +77,13 @@ h4 {
   background-repeat: no-repeat;
   background-size: cover;
   box-shadow: 50px 10px 10px #888888;
+  padding:5px;
   }
 body{
   font-family: 'Yanone Kaffeesatz', sans-serif;
   font-weight: 200;
   background-image: url(http://cdn7.facegfx.com/static/vector/2013/7/9/facegfx-vector-the-city-silhouette-vector.jpg);
   background-repeat: no-repeat;
-  background-size: 3000px;
 }
 .outerwear, .accessory, .tops, .bottoms, .shoes {
   font-size: 50px;
@@ -92,4 +92,27 @@ body{
   background-repeat: no-repeat;
   background-size: cover;
   margin: 100px;
+  padding:5px;
+}
+
+#left{
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  border-radius: 3%;
+  padding-top: 20px;
+  width:49%;
+  height:1500px;
+  background-color: rgba(255, 255, 255, 0.90);
+}
+
+#right{
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  border-radius: 3%;
+  padding-top: 20px;
+  width:49%;
+  height:1500px;
+  background-color: rgba(255, 255, 255, 0.90);
 }

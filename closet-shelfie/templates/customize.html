@@ -24,7 +24,7 @@
         <h4 class="my_closet"><strong> My Closet </strong></h4>
           <p class="tops">Tops</p>
           {% for top in tops %}
-            {{top}}
+            <img src="/images?key={{top.key.id()}}" />
           {% endfor %}
           <p class="outerwear">Outerwear</p>
           {% for outer in outerwear %}

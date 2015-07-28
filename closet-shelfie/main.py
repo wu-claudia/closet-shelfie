@@ -20,6 +20,7 @@ from google.appengine.ext import ndb
 from google.appengine.api import users
 from google.appengine.api import images
 import logging
+import datastore
 
 env=jinja2.Environment(loader=jinja2.FileSystemLoader('templates'))
 
@@ -37,7 +38,7 @@ class User(ndb.Model):
 #     name=ndb.StringProperty()
 #     reminder=ndb.BooleanProperty()
 #     date=ndb.DateTimeProperty()
-#     clothes_key=ndb.KeyProperty(kind=Outfit)
+#     clothes_key=ndb.KeyProperty(kind=Outfit, repeated=true)
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
@@ -87,6 +88,22 @@ class CustomizeHandler(webapp2.RequestHandler):
         variables={'tops':tops, 'bottoms':bottoms,'outerwear':outerwear,'accessory':accessory,'shoes':shoes}
         self.response.write(template.render(variables))
 
+class ImageHandler(webapp2.RequestHandler):
+    def get(self):
+        key_id=self.request.get('key')
+        key_key=ndb.Key(urlsafe=key_id)
+        parts=datastore.LookupRequest()
+        parts.key.extend([key_key])
+        resp = self.datastore.lookup(parts)
+        if len(resp.missing) is 1:
+            raise Exception('entity not found')
+        employee = resp.found[0].entity
+        if (key_key and parts):
+            self.response.headers['Content-Type'] = 'image/jpeg'
+            self.response.out.write(parts)
+        else:
+            self.redirect('/static/noimage.jpg')
+
 class UploadHandler(webapp2.RequestHandler):
     def get(self):
         template=env.get_template('upload.html')
@@ -125,4 +142,5 @@ app = webapp2.WSGIApplication([
     ('/outfit', OutfitHandler),
     ('/calendar', CalendarHandler),
     ('/about', AboutHandler),
+    ('/images', ImageHandler)
 ], debug=True)

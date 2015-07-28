@@ -1,3 +1,37 @@
+header{
+  border-radius: 3%;
+  height:250px;
+  background-color: rgba(255, 255, 255, 0.85);
+  text-align: center;
+  color: rgb(0,0,0);
+  margin:20px;
+}
+
+#about{
+  text-align: left;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+a{
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-weight: 200;
+  text-decoration: none;
+  color: rgb(0,0,0);
+  margin-right: 75px;
+  font-size: 30px;
+  position: relative;
+}
+
+a:hover{
+  text-decoration: underline;
+}
+
+img{
+  margin-top: 45px;
+  margin-bottom: 45px;
+}
+
 div {
   height: 100%;
 }
@@ -9,6 +43,8 @@ div {
 }
 
 h1 {
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-weight: 200;
   text-align: center;
   box-shadow: 50px 10px 10px #888888;
   background-image: url(http://img15.deviantart.net/2f29/i/2012/116/7/b/city_background_by_osaelf-d4xobh8.jpg);
@@ -17,6 +53,8 @@ h1 {
   text-align: center;
 }
 h2 {
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-weight: 200;
   font-size: 75px;
   box-shadow: 50px 10px 10px #888888;
   background-image: url(http://img15.deviantart.net/2f29/i/2012/116/7/b/city_background_by_osaelf-d4xobh8.jpg);
@@ -26,38 +64,56 @@ h2 {
   margin: 100px
 }
 h3 {
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-weight: 200;
   font-size: 75px;
   text-align: right;
 }
 h4 {
-  font-size: 50px;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-weight: 200;
+  font-size: 75px;
   background-image: url(http://img15.deviantart.net/2f29/i/2012/116/7/b/city_background_by_osaelf-d4xobh8.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   box-shadow: 50px 10px 10px #888888;
+  padding:5px;
   }
-html{
+body{
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-weight: 200;
   background-image: url(http://cdn7.facegfx.com/static/vector/2013/7/9/facegfx-vector-the-city-silhouette-vector.jpg);
   background-repeat: no-repeat;
-  background-size: 3000px;
+  background-size: 5500px;
 }
-.tops, .bottoms, .shoes {
+.outerwear, .accessory, .tops, .bottoms, .shoes {
   font-size: 50px;
   box-shadow: 50px 10px 10px #888888;
   background-image: url(http://img15.deviantart.net/2f29/i/2012/116/7/b/city_background_by_osaelf-d4xobh8.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   margin: 100px;
+  padding:5px;
 }
 
+#left{
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  border-radius: 3%;
+  padding-top: 20px;
+  width:49%;
+  height:1500px;
+  background-color: rgba(255, 255, 255, 0.20);
+}
 
-
-
-
-
-
-
-
-
-
+#right{
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  border-radius: 3%;
+  padding-top: 20px;
+  width:49%;
+  height:1500px;
+  background-color: rgba(255, 255, 255, 0.90);
 }

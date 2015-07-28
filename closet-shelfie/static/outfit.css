@@ -1,14 +1,46 @@
+header{
+  border-radius: 3%;
+  height:250px;
+  background-color: rgba(255, 255, 255, 0.85);
+  text-align: center;
+  color: rgb(0,0,0);
+  margin:20px;
+}
+
+#about{
+  text-align: left;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+a{
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-weight: 200;
+  text-decoration: none;
+  color: rgb(0,0,0);
+  margin-right: 75px;
+  font-size: 30px;
+  position: relative;
+}
+
+a:hover{
+  text-decoration: underline;
+}
+
+img{
+  margin-top: 45px;
+  margin-bottom: 45px;
+}
+
 html {
   background-image: url(http://bestinspired.com/wp-content/uploads/2015/07/background-wallpapers-172.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 }
-header{
- background-color: rgba(255, 255, 255, 0.5);
- text-align: left;
- border-width: 200px;
-}
+
 strong{
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-weight: 200;
   text-align: left;
   background-color: rgba(255, 255, 255, 0.5);
   margin: 1375px;
@@ -20,5 +52,8 @@ strong{
     margin: 630px;
     text-align: center bottom;
     font-size: 35px;
-    xpos: bottom: 
+<<<<<<< HEAD
+=======
+    xpos: bottom:
+>>>>>>> 79c37b1a2ce5aff6784fb8771bd3901aeb152570
 }

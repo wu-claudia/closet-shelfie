@@ -20,7 +20,6 @@ from google.appengine.ext import ndb
 from google.appengine.api import users
 from google.appengine.api import images
 import logging
-import datastore
 
 env=jinja2.Environment(loader=jinja2.FileSystemLoader('templates'))
 

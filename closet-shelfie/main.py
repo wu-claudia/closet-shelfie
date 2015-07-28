@@ -28,6 +28,7 @@ class Clothes(ndb.Model):
     part=ndb.StringProperty(required=True)
     file_name=ndb.StringProperty(indexed=False)
     image=ndb.BlobProperty(required=True)
+    user_key=ndb.KeyProperty(kind=User)
 
 class User(ndb.Model):
     #email=ndb.EmailProperty(required=True)
@@ -74,11 +75,7 @@ class HomeHandler(webapp2.RequestHandler):
 
 class CustomizeHandler(webapp2.RequestHandler):
     def get(self):
-        # <img src='mageit?key={{account_key}}'
         tops=Clothes.query(Clothes.part=="Top").fetch()
-        #top_urls=[]
-        #for top in tops:
-        #    top_urls.append(images.get_serving_url(top))
         bottoms=Clothes.query(Clothes.part=="Bottom").fetch()
         outerwear=Clothes.query(Clothes.part=="Outerwear").fetch()
         accessory=Clothes.query(Clothes.part=="Accessory").fetch()

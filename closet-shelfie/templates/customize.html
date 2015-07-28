@@ -28,19 +28,19 @@
           {% endfor %}
           <p class="outerwear">Outerwear</p>
           {% for outer in outerwear %}
-              {{outer}}
+              <img src="/images?key={{outer.key.urlsafe()}}" />
           {% endfor %}
           <p class="bottoms">Bottoms</p>
           {% for bottom in bottoms %}
-            {{bottom}}
+            <img src="/images?key={{bottom.key.urlsafe()}}" />
           {% endfor %}
           <p class="accessory">Accessories</p>
           {% for access in accessory %}
-            {{access}}
+            <img src="/images?key={{access.key.urlsafe()}}" />
           {% endfor %}
           <p class="shoes">Shoes</p>
           {% for shoe in shoes %}
-              {{shoe}}
+              <img src="/images?key={{shoe.key.urlsafe()}}" />
           {% endfor %}
       </section>
     <div>

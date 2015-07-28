@@ -23,6 +23,10 @@ import logging
 
 env=jinja2.Environment(loader=jinja2.FileSystemLoader('templates'))
 
+class User(ndb.Model):
+#     #email=ndb.EmailProperty(required=True)
+     reminder=ndb.BooleanProperty()
+
 class Clothes(ndb.Model):
     color=ndb.StringProperty(required=True)
     part=ndb.StringProperty(required=True)
@@ -30,15 +34,12 @@ class Clothes(ndb.Model):
     image=ndb.BlobProperty(required=True)
     user_key=ndb.KeyProperty(kind=User)
 
-class User(ndb.Model):
-    #email=ndb.EmailProperty(required=True)
-    reminder=ndb.BooleanProperty()
-
-# class Outfit(ndb.Model):
-#     name=ndb.StringProperty()
-#     reminder=ndb.BooleanProperty()
-#     date=ndb.DateTimeProperty()
-#     clothes_key=ndb.KeyProperty(kind=Outfit, repeated=true)
+class Outfit(ndb.Model):
+     name=ndb.StringProperty()
+     reminder=ndb.BooleanProperty()
+     date=ndb.DateTimeProperty()
+     user_key=ndb.KeyProperty()
+     clothes_key=ndb.KeyProperty(kind=Outfit, repeated=true)
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
@@ -75,11 +76,26 @@ class HomeHandler(webapp2.RequestHandler):
 
 class CustomizeHandler(webapp2.RequestHandler):
     def get(self):
-        tops=Clothes.query(Clothes.part=="Top").fetch()
-        bottoms=Clothes.query(Clothes.part=="Bottom").fetch()
-        outerwear=Clothes.query(Clothes.part=="Outerwear").fetch()
-        accessory=Clothes.query(Clothes.part=="Accessory").fetch()
-        shoes=Clothes.query(Clothes.part=="Shoes").fetch()
+        user=users.get_current_user()
+        user_id = user.user_id()
+        user_key = ndb.Key(User, user_id)
+        user_clothes = Clothes.query(Clothes.user_key==user_key).fetch()
+        tops=[]
+        bottoms=[]
+        outerwear=[]
+        accessory=[]
+        shoes=[]
+        for x in user_clothes:
+            if x.part == "Top":
+                tops.append(x)
+            elif x.part == "Bottom":
+                bottoms.append(x)
+            elif x.part == "Accessory":
+                accesory.append(x)
+            elif x.part == "Outerwear":
+                outerwear.append(x)
+            else:
+                shoes.append(x)
         template=env.get_template('customize.html')
         variables={'tops':tops, 'bottoms':bottoms,'outerwear':outerwear,'accessory':accessory,'shoes':shoes}
         self.response.write(template.render(variables))
@@ -100,17 +116,29 @@ class UploadHandler(webapp2.RequestHandler):
         self.response.write(template.render())
 
     def post(self):
+        user_id = users.get_current_user().user_id()
         imagedata = Clothes(color=self.request.get('color'),
-                            file_name = str(self.request.get('name')),
+                            file_name=str(self.request.get('name')),
                             part=self.request.get('part'),
-                            image = self.request.get('image'))
+                            image=self.request.get('image'),
+                            user_key=ndb.Key(User, user_id))
         imagedata.put()
         return self.redirect('/upload')
 
 class OutfitHandler(webapp2.RequestHandler):
     def get(self):
+        user=users.get_current_user()
+        user_id = user.user_id()
+        user_key = ndb.Key(User, user_id)
         template=env.get_template('outfit.html')
         self.response.write(template.render())
+
+    def post(self):
+        complete_outfit = Outfit(name=ndb.StringProperty()
+        reminder=ndb.BooleanProperty()
+        date=ndb.DateTimeProperty()
+        user_key=ndb.KeyProperty()
+        clothes_key=ndb.KeyProperty(kind=Outfit, repeated=true))
 
 class CalendarHandler(webapp2.RequestHandler):
     def get(self):

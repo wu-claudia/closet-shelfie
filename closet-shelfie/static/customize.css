@@ -41,7 +41,7 @@ html{
   background-repeat: no-repeat;
   background-size: 3000px;
 }
-.tops, .bottoms, .shoes {
+.tops, .bottoms, .shoes, .accessory, .outerwear {
   font-size: 50px;
   box-shadow: 50px 10px 10px #888888;
   background-image: url(http://img15.deviantart.net/2f29/i/2012/116/7/b/city_background_by_osaelf-d4xobh8.jpg);

@@ -2,9 +2,16 @@
   <head>
     <title>My Closet</title>
   </head>
-    <h1><img src="../static/title.png"/></h1>
     <link href="../static/customize.css" rel="stylesheet" />
   <body>
+    <header>
+      <a href= '/'><img src="static/title.png" alt="Logo Pic"></a></br>
+      <a id="about" href= '/about'>About</a>
+      <a href= '/custom'>My Closet</a>
+      <a href= '/outfit'>My Outfits</a>
+      <a href= '/upload'>Upload</a>
+      <a href= '/calendar'>Reminders</a>
+    </header>
     <div id="left">
       <section>
         <h2 class="my_outfit"><strong> My Outfit  <h3 class="edit"><strong> Edit</strong></h3></strong></h2>
@@ -16,11 +23,25 @@
       <section>
         <h4 class="my_closet"><strong> My Closet </strong></h4>
           <p class="tops">Tops</p>
-          <input type="checkbox" />
+          {% for top in tops %}
+            {{top}}
+          {% endfor %}
+          <p class="outerwear">Outerwear</p>
+          {% for outer in outerwear %}
+              {{outer}}
+          {% endfor %}
           <p class="bottoms">Bottoms</p>
-          <input type="checkbox" />
+          {% for bottom in bottoms %}
+            {{bottom}}
+          {% endfor %}
+          <p class="accessory">Accessories</p>
+          {% for access in accessory %}
+            {{access}}
+          {% endfor %}
           <p class="shoes">Shoes</p>
-          <input type="checkbox" />
+          {% for shoe in shoes %}
+              {{shoe}}
+          {% endfor %}
       </section>
     <div>
 

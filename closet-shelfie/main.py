@@ -73,8 +73,15 @@ class HomeHandler(webapp2.RequestHandler):
 
 class CustomizeHandler(webapp2.RequestHandler):
     def get(self):
+        # <img src='mageit?key={{account_key}}'
+        tops=Clothes.query(Clothes.part=="Top").fetch()
+        bottoms=Clothes.query(Clothes.part=="Bottom").fetch()
+        outerwear=Clothes.query(Clothes.part=="Outerwear").fetch()
+        accessory=Clothes.query(Clothes.part=="Accessory").fetch()
+        shoes=Clothes.query(Clothes.part=="Shoes").fetch()
         template=env.get_template('customize.html')
-        self.response.write(template.render())
+        variables={'tops':tops, 'bottoms':bottoms,'outerwear':outerwear,'accessory':accessory,'shoes':shoes}
+        self.response.write(template.render(variables))
 
 class UploadHandler(webapp2.RequestHandler):
     def get(self):

@@ -29,9 +29,8 @@ class Clothes(ndb.Model):
     image=ndb.BlobProperty(required=True)
 
 class User(ndb.Model):
-    username=ndb.StringProperty(required=True)
-    #email=ndb.EmailProperty(required=True)
-    password=ndb.StringProperty(required=True)
+    email=ndb.EmailProperty(required=True)
+    reminder=ndb.BooleanProperty()
 
 # class Outfit(ndb.Model):
 #     name=ndb.StringProperty()

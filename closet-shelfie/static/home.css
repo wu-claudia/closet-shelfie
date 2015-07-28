@@ -5,12 +5,16 @@
   text-align: center;
 }
 
-img{
+header img{
+  margin-left: auto;
+  margin-right: auto;
   margin-top: 175px;
   margin-bottom: 70px;
 }
 
 body{
+  margin-left: auto;
+  margin-right: auto;
   border-radius: 3%;
   color: rgb(0,0,0);
   font-size: 20px;
@@ -19,24 +23,13 @@ body{
   text-align: center;
   padding:15px;
   background-color: rgba(255, 255, 255, 0.5);
-  width:275px;
-  margin-left: 250px;
-  margin-bottom: 120px;
-  margin-top: 20px;
-  position: absolute;
 }
 
-#register{
-  position: relative;
+#about{
+  /*position: relative;
+  padding:30px;
   border-radius: 3%;
-  color: rgb(0,0,0);
-  font-size: 20px;
-  font-family: 'Yanone Kaffeesatz', sans-serif;
-  font-weight: 200;
-  text-align: center;
-  padding:15px;
-  margin-left: 750px;
-  margin-bottom: 130px;
-  background-color: rgba(255, 255, 255, 0.5);
-  width:425px;
+  width:50;
+  height:50;
+  background-color: rgba(255, 255, 255, 0.55);*/
 }

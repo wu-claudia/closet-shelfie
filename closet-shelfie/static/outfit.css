@@ -1,7 +1,7 @@
 header{
   border-radius: 3%;
   height:250px;
-  background-color: rgba(255, 255, 255, 0.85);
+  background-color: rgba(255, 255, 255, 0.80);
   text-align: center;
   color: rgb(0,0,0);
   margin:20px;
@@ -33,7 +33,7 @@ img{
 }
 
 body {
-  background-image: url(static/curve.jpg);
+  background-image: url(curve.png);
   background-size: contain;
 }
 
@@ -41,13 +41,13 @@ strong{
   font-family: 'Yanone Kaffeesatz', sans-serif;
   font-weight: 200;
   text-align: left;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.70);
   margin: 1375px;
   padding: 20px;
   border: 40px;
 }
 #edit{
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.75);
     margin: 630px;
     text-align: center bottom;
     font-size: 35px;

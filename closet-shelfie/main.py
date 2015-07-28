@@ -37,9 +37,8 @@ class Clothes(ndb.Model):
 class Outfit(ndb.Model):
      name=ndb.StringProperty()
      reminder=ndb.BooleanProperty()
-     date=ndb.DateTimeProperty()
      user_key=ndb.KeyProperty()
-     clothes_key=ndb.KeyProperty(kind=Outfit, repeated=true)
+     clothes_key=ndb.KeyProperty(kind=Clothes, repeated=True)
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
@@ -100,6 +99,12 @@ class CustomizeHandler(webapp2.RequestHandler):
         variables={'tops':tops, 'bottoms':bottoms,'outerwear':outerwear,'accessory':accessory,'shoes':shoes}
         self.response.write(template.render(variables))
 
+    def post(self):
+        complete_outfit = Outfit(name=self.request.get('name'),
+                                 reminder=self.request.get('reminder'),
+                                 user_key=ndb.Key(User, user_id),
+                                 clothes_key=ndb.Key(Clothes, ))
+
 class ImageHandler(webapp2.RequestHandler):
     def get(self):
         key_id=self.request.get('key')
@@ -130,15 +135,10 @@ class OutfitHandler(webapp2.RequestHandler):
         user=users.get_current_user()
         user_id = user.user_id()
         user_key = ndb.Key(User, user_id)
+        user_outfits = Outfit.query(Outfit.user_key==user_key).fetch()
         template=env.get_template('outfit.html')
-        self.response.write(template.render())
-
-    def post(self):
-        complete_outfit = Outfit(name=ndb.StringProperty()
-        reminder=ndb.BooleanProperty()
-        date=ndb.DateTimeProperty()
-        user_key=ndb.KeyProperty()
-        clothes_key=ndb.KeyProperty(kind=Outfit, repeated=true))
+        variables = {'user_outfits':user_outfits}
+        self.response.write(template.render(variables))
 
 class CalendarHandler(webapp2.RequestHandler):
     def get(self):

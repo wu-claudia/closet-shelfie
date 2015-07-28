@@ -24,22 +24,27 @@
         <h4 class="my_closet">My Closet</h4>
           <p class="tops">Tops</p>
           {% for top in tops %}
+            <input type="checkbox" />
             <img src="/images?key={{top.key.urlsafe()}}" />
           {% endfor %}
           <p class="outerwear">Outerwear</p>
           {% for outer in outerwear %}
+              <input type="checkbox" />
               <img src="/images?key={{outer.key.urlsafe()}}" />
           {% endfor %}
           <p class="bottoms">Bottoms</p>
           {% for bottom in bottoms %}
+            <input type="checkbox" />
             <img src="/images?key={{bottom.key.urlsafe()}}" />
           {% endfor %}
           <p class="accessory">Accessories</p>
           {% for access in accessory %}
+            <input type="checkbox" />
             <img src="/images?key={{access.key.urlsafe()}}" />
           {% endfor %}
           <p class="shoes">Shoes</p>
           {% for shoe in shoes %}
+              <input type="checkbox" />
               <img src="/images?key={{shoe.key.urlsafe()}}" />
           {% endfor %}
       </section>

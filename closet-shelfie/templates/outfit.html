@@ -15,8 +15,8 @@
         </header>
       </div>
     <h1><strong><a href= '/outfit'>Edit</strong></h1></a>
-    <!--  <div  id="edit">
-        <h2><a href= '/calendar'>Reminders</a></h2
-      </div>-->
+    {% for outfit in user_outfits %}
+      <img src="images?key={{outfit.key.urlsafe()}}"">
+    {% endfor %}
   </body>
 </html>

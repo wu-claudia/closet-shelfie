@@ -33,9 +33,8 @@ img{
 }
 
 html {
-  background-image: url(http://bestinspired.com/wp-content/uploads/2015/07/background-wallpapers-172.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-image: url(static/curve.jpg);
+  background-size: contain;
 }
 
 strong{

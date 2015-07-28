@@ -32,12 +32,10 @@ img{
   margin-bottom: 45px;
 }
 
-div {
-  height: 100%;
-}
 #right {
   float:right;
 }
+
 #left{
   float:left;
 }
@@ -47,52 +45,58 @@ h1 {
   font-weight: 200;
   text-align: center;
   box-shadow: 5px 5px 5px #888888;
-  /*background-image: url(http://img15.deviantart.net/2f29/i/2012/116/7/b/city_background_by_osaelf-d4xobh8.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;*/
   text-align: center;
 }
+
 h2 {
   font-family: 'Yanone Kaffeesatz', sans-serif;
   font-weight: 200;
-  font-size: 75px;
-  box-shadow: 5px 5px 5px #888888;
-  /*background-image: url(http://img15.deviantart.net/2f29/i/2012/116/7/b/city_background_by_osaelf-d4xobh8.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;*/
+  font-size: 55px;
+  padding: 50px;
   text-align: bottom-left;
-  margin: 100px
+  margin: 10px
 }
+
 h3 {
   font-family: 'Yanone Kaffeesatz', sans-serif;
   font-weight: 200;
-  font-size: 75px;
-  text-align: right;
+  font-size: 25px;
+  text-align: center;
 }
+
 h4 {
   font-family: 'Yanone Kaffeesatz', sans-serif;
   font-weight: 200;
-  font-size: 75px;
-  /*background-image: url(http://img15.deviantart.net/2f29/i/2012/116/7/b/city_background_by_osaelf-d4xobh8.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;*/
-  box-shadow: 5px 5px 5px #888888;
-  padding:5px;
+  font-size: 55px;
+  padding:50px;
+  margin:10px;
   }
+
 body{
   font-family: 'Yanone Kaffeesatz', sans-serif;
   font-weight: 200;
   background-image: url(../static/pattern.png);
-  background-size: ;
 }
+
 .outerwear, .accessory, .tops, .bottoms, .shoes {
-  font-size: 50px;
+  border-radius: 3%;
   box-shadow: 5px 5px 5px #888888;
-  /*background-image: url(http://img15.deviantart.net/2f29/i/2012/116/7/b/city_background_by_osaelf-d4xobh8.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;*/
-  margin: 100px;
+  margin: 5px;
   padding:5px;
+}
+
+p{
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-weight: 200;
+  padding:5px;
+  font-size: 35px;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+section img{
+  height:230px;
+  margin:30px;
+  text-align: center;
 }
 
 #left{
@@ -102,8 +106,8 @@ body{
   border-radius: 3%;
   padding-top: 20px;
   width:49%;
-  height:1500px;
-  background-color: rgba(255, 255, 255, 0.20);
+  height:2000px;
+  background-color: rgba(255, 255, 255, 0.90);
 }
 
 #right{
@@ -113,6 +117,6 @@ body{
   border-radius: 3%;
   padding-top: 20px;
   width:49%;
-  height:1500px;
-  background-color: rgba(255, 255, 255, 0.90);
+  height:2000px;
+  background-color: rgba(250, 250, 255, 0.90);
 }

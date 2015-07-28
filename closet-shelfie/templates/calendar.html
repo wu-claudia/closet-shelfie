@@ -1,8 +1,24 @@
 <html>
   <head>
-    <title>Calendar/Reminder</title>
+    <title>Calendar/Reminders</title>
+    <link href="static/calendar.css" rel="stylesheet">
   </head>
+  <header>
+    <a href= '/'><img src="static/title.png" alt="Logo Pic"></a></br>
+    <a id="about" href= '/about'>About</a>
+    <a href= '/closet'>My Closet</a>
+    <a href= '/outfit'>My Outfits</a>
+    <a href= '/upload'>Upload</a>
+    <a href= '/calendar'>Reminders</a>
+  </header>
   <body>
-
+    <form action="/numberAdded" method="get">
+      <h1>Want a notif?</h1>
+      <div id="enter">
+        Enter your phone number:
+        <p>(must be a valid ten digit number without any letters)</p>
+      </div>
+      <input type="tel" id"inputTel" name"yes" class"inputCell">
+      <button type="submit" id="submitTel">Sumbit</button>
   </body>
 </html>

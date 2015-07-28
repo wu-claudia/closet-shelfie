@@ -1,0 +1,59 @@
+
+header{
+  border-radius: 3%;
+  height:250px;
+  background-color: rgba(255, 255, 255, 0.85);
+  text-align: center;
+  color: rgb(0,0,0);
+}
+
+#about{
+  text-align: left;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+a{
+  text-decoration: none;
+  color: rgb(0,0,0);
+  margin-right: 75px;
+  font-size: 30px;
+  position: relative;
+}
+
+a:hover{
+  text-decoration: underline;
+}
+
+img{
+  margin-top: 45px;
+  margin-bottom: 45px;
+}
+
+body{
+  background: url(unicorn.jpg);
+  color: rgb(0,0,0);
+  font-size: 20px;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-weight: 200;
+  text-align: center;
+  padding:15px;
+  /*margin-top: 30px;*/
+}
+
+form{
+  position: relative;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  border-radius: 3%;
+  padding-top: 20px;
+  height:750px;
+  background-color: rgba(255, 255, 255, 0.95);
+}
+
+div{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}

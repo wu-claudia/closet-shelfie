@@ -15,7 +15,7 @@
     <div id="left">
       <section>
         <h2 class="my_outfit"><strong> My Outfit  <h3 class="edit"> Edit</h3></strong></h2>
-        <!--<h3 class="edit"><strong> Edit</strong></h3>-->
+        <button>Save Outfit</button>
       </section>
     </div>
 
@@ -23,30 +23,33 @@
       <section>
         <h4 class="my_closet">My Closet</h4>
           <p class="tops">Tops</p>
+          <form action="" method="post">
           {% for top in tops %}
-            <input type="checkbox" />
+            <input id="checked" type="checkbox" name="checked{{top.key.urlsafe()}}"/>
             <img src="/images?key={{top.key.urlsafe()}}" />
           {% endfor %}
           <p class="outerwear">Outerwear</p>
           {% for outer in outerwear %}
-              <input type="checkbox" />
+              <input type="checkbox" name="checked{{outer.key.urlsafe()}}"/>
               <img src="/images?key={{outer.key.urlsafe()}}" />
           {% endfor %}
           <p class="bottoms">Bottoms</p>
           {% for bottom in bottoms %}
-            <input type="checkbox" />
+            <input type="checkbox" name="checked{{bottom.key.urlsafe()}}"/>
             <img src="/images?key={{bottom.key.urlsafe()}}" />
           {% endfor %}
           <p class="accessory">Accessories</p>
           {% for access in accessory %}
-            <input type="checkbox" />
+            <input type="checkbox" name="checked{{access.key.urlsafe()}}"/>
             <img src="/images?key={{access.key.urlsafe()}}" />
           {% endfor %}
           <p class="shoes">Shoes</p>
           {% for shoe in shoes %}
-              <input type="checkbox" />
+              <input type="checkbox" name="checked{{shoe.key.urlsafe()}}"/>
               <img src="/images?key={{shoe.key.urlsafe()}}" />
           {% endfor %}
+          <input type="submit" value= "Save Outfit" />
+        </form>
       </section>
     <div>
 

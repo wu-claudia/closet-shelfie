@@ -15,8 +15,10 @@
         </header>
       </div>
     <h1><strong><a href= '/outfit'>Edit</strong></h1></a>
-    {% for outfit in user_outfits %}
-      <img src="images?key={{outfit.key.urlsafe()}}"">
+    {% for outfit_key in outfit_to_clothes %}
+      {% for x in outfit_to_clothes[outfit_key] %}
+      <img src="images?key={{x.key.urlsafe()}}">
+      {% endfor %}
     {% endfor %}
   </body>
 </html>

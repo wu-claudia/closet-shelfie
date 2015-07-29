@@ -19,7 +19,6 @@ import jinja2
 from google.appengine.ext import ndb
 from google.appengine.api import users
 from google.appengine.api import images
-import logging
 
 env=jinja2.Environment(loader=jinja2.FileSystemLoader('templates'))
 
@@ -36,8 +35,7 @@ class Clothes(ndb.Model):
 
 class Outfit(ndb.Model):
      name=ndb.StringProperty()
-     reminder=ndb.BooleanProperty()
-     user_key=ndb.KeyProperty()
+     user=ndb.UserProperty()
      clothes_key=ndb.KeyProperty(kind=Clothes, repeated=True)
 
 class MainHandler(webapp2.RequestHandler):
@@ -60,18 +58,6 @@ class HomeHandler(webapp2.RequestHandler):
         self.response.write('<b><p><a href="%s" id="log">Log Out</a></p></b>' % logout_url)
         if user is None:
             self.redirect('/')
-    #def post(self):
-        # username=self.request.get("usernamesignup")
-        # password=self.request.get("passwordsignup")
-        # user = User(username=username,
-        #             password=password)
-        # user_key=ndb.Key(User, user).fetch()
-        # button_val = self.request.get('Sign up')
-        # logging.error("Button value: ", button_val)
-        # if user_key:
-        #     return self.redirect('/custom')
-        #
-        # return self.redirect('/')
 
 class CustomizeHandler(webapp2.RequestHandler):
     def get(self):
@@ -79,11 +65,13 @@ class CustomizeHandler(webapp2.RequestHandler):
         user_id = user.user_id()
         user_key = ndb.Key(User, user_id)
         user_clothes = Clothes.query(Clothes.user_key==user_key).fetch()
+
         tops=[]
         bottoms=[]
         outerwear=[]
         accessory=[]
         shoes=[]
+
         for x in user_clothes:
             if x.part == "Top":
                 tops.append(x)
@@ -100,10 +88,19 @@ class CustomizeHandler(webapp2.RequestHandler):
         self.response.write(template.render(variables))
 
     def post(self):
+        outfit_clothes=[]
+        user=users.get_current_user()
+        user_id = user.user_id()
+        user_key = ndb.Key(User, user_id)
+        user_clothes = Clothes.query(Clothes.user_key==user_key).fetch()
+        for x in user_clothes:
+            if self.request.get('checked' + x.key.urlsafe()) == "on":
+                outfit_clothes.append(x.key)
         complete_outfit = Outfit(name=self.request.get('name'),
-                                 reminder=self.request.get('reminder'),
-                                 user_key=ndb.Key(User, user_id),
-                                 clothes_key=ndb.Key(Clothes, ))
+                                 user=user,
+                                 clothes_key=outfit_clothes)
+        complete_outfit.put()
+        self.redirect('/outfit')
 
 class ImageHandler(webapp2.RequestHandler):
     def get(self):
@@ -135,9 +132,17 @@ class OutfitHandler(webapp2.RequestHandler):
         user=users.get_current_user()
         user_id = user.user_id()
         user_key = ndb.Key(User, user_id)
-        user_outfits = Outfit.query(Outfit.user_key==user_key).fetch()
+        user_outfits = Outfit.query(Outfit.user==user).fetch()
+        outfit_to_clothes = {
+        #   "outfit1_key": ["clothes1", "clothes2"],
+        #   "outfit2": ["clothes1", "clothes2"]
+        }
+        for outfit in user_outfits:
+            outfit_to_clothes[outfit.key] = []
+            for x in outfit.clothes_key:
+                outfit_to_clothes[outfit.key].append(x.get())
         template=env.get_template('outfit.html')
-        variables = {'user_outfits':user_outfits}
+        variables = {'outfit_to_clothes':outfit_to_clothes}
         self.response.write(template.render(variables))
 
 class CalendarHandler(webapp2.RequestHandler):

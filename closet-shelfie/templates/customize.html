@@ -25,7 +25,7 @@
               <div>
                 <input id="checked" type="checkbox" name="checked{{top.key.urlsafe()}}"/>
                 <img id="top" src="/images?key={{top.key.urlsafe()}}" />
-                <button id="delete" type="button" name="checked{{top.key.urlsafe()}}">Delete</button>
+                <a href="/delete?item={{top.key.urlsafe()}}">Delete</button>
               </div>
               <input type="checkbox" name="checked{{top.key.urlsafe()}}"/>
               <img src="/images?key={{top.key.urlsafe()}}" />
@@ -37,7 +37,7 @@
             <div>
                 <input id="checked" type="checkbox" name="checked{{outer.key.urlsafe()}}"/>
                 <img src="/images?key={{outer.key.urlsafe()}}" />
-                <button id="delete" type="button" formaction="{{outer.key.delete()}}">Delete</button>
+                <a href="/delete?item={{outer.key.urlsafe()}}">Delete</button>
             </div>
             {% endfor %}
           <p class="bottoms">Bottoms</p>
@@ -45,7 +45,7 @@
             <div>
               <input id="checked" type="checkbox" name="checked{{bottom.key.urlsafe()}}"/>
               <img src="/images?key={{bottom.key.urlsafe()}}" />
-              <button id="delete" type="button" name="checked{{bottom.key.urlsafe()}}">Delete</button>
+              <a href="/delete?item={{bottom.key.urlsafe()}}">Delete</button>
             </div>
             {% endfor %}
           <p class="accessory">Accessories</p>

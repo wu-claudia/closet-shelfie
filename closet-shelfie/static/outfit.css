@@ -27,14 +27,14 @@ a:hover{
   text-decoration: underline;
 }
 
-img{
+header img{
   margin-top: 45px;
   margin-bottom: 45px;
 }
 
 body {
   background-image: url(curve.png);
-  background-size: contain;
+  text-align: center;
 }
 
 strong{
@@ -51,8 +51,16 @@ strong{
     margin: 630px;
     text-align: center bottom;
     font-size: 35px;
-<<<<<<< HEAD
-=======
-    xpos: bottom:
->>>>>>> 79c37b1a2ce5aff6784fb8771bd3901aeb152570
+}
+#outfit{
+  width:200px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.90);
+  border-radius: 3%;
+}
+
+section img{
+  width:200px;
+  margin-left: auto;
+  margin-right: auto;
 }

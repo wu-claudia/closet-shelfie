@@ -12,43 +12,37 @@
       <a href= '/upload'>Upload</a>
       <a href= '/calendar'>Reminders</a>
     </header>
-    <div id="left">
-      <section>
-        <h2 class="my_outfit"><strong> My Outfit  <h3 class="edit"> Edit</h3></strong></h2>
-        <button>Save Outfit</button>
-      </section>
-    </div>
 
     <div id="right">
       <section>
         <h4 class="my_closet">My Closet</h4>
-          <p class="tops">Tops</p>
-          <form action="" method="post">
-          {% for top in tops %}
-            <input id="checked" type="checkbox" name="checked{{top.key.urlsafe()}}"/>
-            <img src="/images?key={{top.key.urlsafe()}}" />
-          {% endfor %}
+        <p class="tops">Tops</p>
+        <form action="" method="post">
+            {% for top in tops %}
+              <input id="checked" type="checkbox" name="checked{{top.key.urlsafe()}}"/>
+              <img src="/images?key={{top.key.urlsafe()}}" />
+            {% endfor %}
           <p class="outerwear">Outerwear</p>
-          {% for outer in outerwear %}
-              <input type="checkbox" name="checked{{outer.key.urlsafe()}}"/>
-              <img src="/images?key={{outer.key.urlsafe()}}" />
-          {% endfor %}
+            {% for outer in outerwear %}
+                <input type="checkbox" name="checked{{outer.key.urlsafe()}}"/>
+                <img src="/images?key={{outer.key.urlsafe()}}" />
+            {% endfor %}
           <p class="bottoms">Bottoms</p>
-          {% for bottom in bottoms %}
-            <input type="checkbox" name="checked{{bottom.key.urlsafe()}}"/>
-            <img src="/images?key={{bottom.key.urlsafe()}}" />
-          {% endfor %}
+            {% for bottom in bottoms %}
+              <input type="checkbox" name="checked{{bottom.key.urlsafe()}}"/>
+              <img src="/images?key={{bottom.key.urlsafe()}}" />
+            {% endfor %}
           <p class="accessory">Accessories</p>
-          {% for access in accessory %}
-            <input type="checkbox" name="checked{{access.key.urlsafe()}}"/>
-            <img src="/images?key={{access.key.urlsafe()}}" />
-          {% endfor %}
+            {% for access in accessory %}
+              <input type="checkbox" name="checked{{access.key.urlsafe()}}"/>
+              <img src="/images?key={{access.key.urlsafe()}}" />
+            {% endfor %}
           <p class="shoes">Shoes</p>
-          {% for shoe in shoes %}
-              <input type="checkbox" name="checked{{shoe.key.urlsafe()}}"/>
-              <img src="/images?key={{shoe.key.urlsafe()}}" />
-          {% endfor %}
-          <input type="submit" value= "Save Outfit" />
+            {% for shoe in shoes %}
+                <input type="checkbox" name="checked{{shoe.key.urlsafe()}}"/>
+                <img src="/images?key={{shoe.key.urlsafe()}}" />
+            {% endfor %}</br>
+          <button type="submit" id="submit" value= "Save Outfit"><strong>Save Outfit</strong></button>
         </form>
       </section>
     <div>

@@ -19,8 +19,6 @@
         <p class="tops">Tops</p>
         <form action="" method="post">
           <ul class="pagination">
-            <a href="/custom/?page{{previous_page_number}}">Back</a>
-            <a class="/custom/?page{{next}}" href="#next">Next</a>
             {% for top in tops %}
               <div>
                 <input id="checked" type="checkbox" name="checked{{top.key.urlsafe()}}"/>

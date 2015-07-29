@@ -73,13 +73,13 @@ class CustomizeHandler(webapp2.RequestHandler):
         shoes=[]
 
         for x in user_clothes:
-            if x.part == "Top":
+            if x.part == "aTop":
                 tops.append(x)
-            elif x.part == "Bottom":
+            elif x.part == "cBottom":
                 bottoms.append(x)
             elif x.part == "Accessory":
                 accessory.append(x)
-            elif x.part == "Outerwear":
+            elif x.part == "bOuterwear":
                 outerwear.append(x)
             else:
                 shoes.append(x)

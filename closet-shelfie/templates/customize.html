@@ -22,6 +22,7 @@
             <a href="/custom/?page{{previous_page_number}}">Back</a>
             <a class="/custom/?page{{next}}" href="#next">Next</a>
             {% for top in tops %}
+<<<<<<< HEAD
               <!-- <li> -->
               <div>
                 <input id="checked" type="checkbox" name="checked{{top.key.urlsafe()}}"/>
@@ -29,6 +30,10 @@
                 <button id="delete" type="button" name="checked{{top.key.urlsafe()}}">Delete</button>
               </div>
               <!-- </li> -->
+=======
+              <input type="checkbox" name="checked{{top.key.urlsafe()}}"/>
+              <img src="/images?key={{top.key.urlsafe()}}" />
+>>>>>>> 3e924be8a4136f3fa53a64b714ffe716f6d5ba80
             {% endfor %}
           </ul>
 

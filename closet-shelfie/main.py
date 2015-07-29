@@ -130,8 +130,6 @@ class UploadHandler(webapp2.RequestHandler):
 class OutfitHandler(webapp2.RequestHandler):
     def get(self):
         user=users.get_current_user()
-        user_id = user.user_id()
-        user_key = ndb.Key(User, user_id)
         user_outfits = Outfit.query(Outfit.user==user).fetch()
         outfit_to_clothes = {
         #   "outfit1_key": ["clothes1", "clothes2"],

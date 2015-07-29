@@ -15,12 +15,12 @@
     <h1><strong><a href= '/outfit'>Edit</strong></h1></a>
     <section id="outfit">
       {% for outfit_key in outfit_to_clothes %}
+        <div class="column">
         {% for x in outfit_to_clothes[outfit_key]|sort(attribute='part') %}
           <img src="images?key={{x.key.urlsafe()}}">
-        <div class="column">
         {% endfor %}
-      {% endfor %}
         </div>
+      {% endfor %}
     </section>
   </body>
 </html>

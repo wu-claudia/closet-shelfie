@@ -19,6 +19,7 @@ import jinja2
 from google.appengine.ext import ndb
 from google.appengine.api import users
 from google.appengine.api import images
+import logging
 
 env=jinja2.Environment(loader=jinja2.FileSystemLoader('templates'))
 
@@ -61,6 +62,12 @@ class HomeHandler(webapp2.RequestHandler):
 
 class CustomizeHandler(webapp2.RequestHandler):
     def get(self):
+        edit_outfit_urlsafe=self.request.get('outfit')
+        if edit_outfit_urlsafe:
+            edit_outfit_key=ndb.Key(urlsafe=edit_outfit_urlsafe)
+            outfit=edit_outfit_key.get()
+        else:
+            outfit=None
         user=users.get_current_user()
         user_id = user.user_id()
         user_key = ndb.Key(User, user_id)
@@ -84,7 +91,7 @@ class CustomizeHandler(webapp2.RequestHandler):
             else:
                 shoes.append(x)
         template=env.get_template('customize.html')
-        variables={'tops':tops, 'bottoms':bottoms,'outerwear':outerwear,'accessory':accessory,'shoes':shoes}
+        variables={'tops':tops, 'bottoms':bottoms,'outerwear':outerwear,'accessory':accessory,'shoes':shoes, 'outfit':outfit}
         self.response.write(template.render(variables))
 
     def post(self):
@@ -96,10 +103,19 @@ class CustomizeHandler(webapp2.RequestHandler):
         for x in user_clothes:
             if self.request.get('checked' + x.key.urlsafe()) == "on":
                 outfit_clothes.append(x.key)
-        complete_outfit = Outfit(name=self.request.get('name'),
-                                 user=user,
-                                 clothes_key=outfit_clothes)
-        complete_outfit.put()
+
+        edit_outfit_urlsafe=self.request.get('outfit')
+        if edit_outfit_urlsafe:
+            edit_outfit_key=ndb.Key(urlsafe=edit_outfit_urlsafe)
+            edit_outfit=edit_outfit_key.get()
+            edit_outfit.clothes_key=outfit_clothes
+            edit_outfit.put()
+        else:
+            logging.error("No value")
+            complete_outfit = Outfit(name=self.request.get('name'),
+                                     user=user,
+                                     clothes_key=outfit_clothes)
+            complete_outfit.put()
         self.redirect('/outfit')
 
 class ImageHandler(webapp2.RequestHandler):
@@ -131,31 +147,35 @@ class DeleteHandler(webapp2.RequestHandler):
         for outfit in outfits_with_clothes:
             outfit.key.delete()
 
-        user=users.get_current_user()
-        user_id = user.user_id()
-        user_key = ndb.Key(User, user_id)
-        user_clothes = Clothes.query(Clothes.user_key==user_key).fetch()
+        self.redirect('/custom')
 
-        tops=[]
-        bottoms=[]
-        outerwear=[]
-        accessory=[]
-        shoes=[]
-
-        for x in user_clothes:
-            if x.part == "Top":
-                tops.append(x)
-            elif x.part == "Bottom":
-                bottoms.append(x)
-            elif x.part == "Accessory":
-                accessory.append(x)
-            elif x.part == "Outerwear":
-                outerwear.append(x)
-            else:
-                shoes.append(x)
-        template=env.get_template('customize.html')
-        variables={'tops':tops, 'bottoms':bottoms,'outerwear':outerwear,'accessory':accessory,'shoes':shoes}
-        self.response.write(template.render(variables))
+# class EditOutfitHandler(webapp2.RequestHandler):
+#     def get(self):
+#         edit_outfit_urlsafe=self.request.get('outfit')
+#         edit_outfit_key=ndb.Key(urlsafe=edit_outfit_urlsafe)
+#         outfit=edit_outfit_key.get()
+#         template=env.get_template('customize.html')
+#         variables={'outfit':outfit}
+#         self.response.write(template.render(variables))
+#
+#     def post(self):
+#         outfit_clothes=[]
+#         user=users.get_current_user()
+#         user_id = user.user_id()
+#         user_key = ndb.Key(User, user_id)
+#         user_clothes = Clothes.query(Clothes.user_key==user_key).fetch()
+#         for x in user_clothes:
+#             if self.request.get('checked' + x.key.urlsafe()) == "on":
+#                 outfit_clothes.append(x.key)
+#         new_outfit = Outfit(name=self.request.get('name'),
+#                             user=user,
+#                             clothes_key=outfit_clothes)
+#         new_outfit.put()
+#
+#         edit_outfit_urlsafe=self.request.get('outfit')
+#         edit_outfit_key=ndb.Key(urlsafe=edit_outfit_urlsafe)
+#         outfit=edit_outfit_key.get()
+#         outfit.delete()
 
 class UploadHandler(webapp2.RequestHandler):
     def get(self):
@@ -214,5 +234,5 @@ app = webapp2.WSGIApplication([
     ('/calendar', CalendarHandler),
     ('/about', AboutHandler),
     ('/images', ImageHandler),
-    ('/delete', DeleteHandler)
+    ('/delete', DeleteHandler),
 ], debug=True)

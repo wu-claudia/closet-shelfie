@@ -15,13 +15,28 @@
 
     <div id="right">
       <section>
-        <h4 class="my_closet">My Closet</h4>
+        {% if outfit %}
+          <h4>Edit Outfit</h4>
+        {% else %}
+          <h4 class="my_closet">My Closet</h4>
+        {% endif %}
         <p class="tops">Tops</p>
-        <form action="" method="post">
+        <form
+          {% if outfit %}
+            action="/custom?outfit={{outfit.key.urlsafe()}}"
+          {% else %}
+            action="/custom"
+          {% endif %}
+          method="post">
+
           <ul class="pagination">
             {% for top in tops %}
               <div>
-                <input id="checked" type="checkbox" name="checked{{top.key.urlsafe()}}"/>
+                {% if outfit and top.key in outfit.clothes_key %}
+                  <input id="checked" type="checkbox" name="checked{{top.key.urlsafe()}}" checked/>
+                {% else %}
+                  <input id="checked" type="checkbox" name="checked{{top.key.urlsafe()}}"/>
+                {% endif %}
                 <img id="top" src="/images?key={{top.key.urlsafe()}}" />
                 <button><a href="/delete?item={{top.key.urlsafe()}}">Delete</button>
               </div>
@@ -31,7 +46,11 @@
           <p class="outerwear">Outerwear</p>
             {% for outer in outerwear %}
             <div>
+              {% if outfit and outer.key in outfit.clothes_key %}
+                <input id="checked" type="checkbox" name="checked{{outer.key.urlsafe()}}" checked/>
+              {% else %}
                 <input id="checked" type="checkbox" name="checked{{outer.key.urlsafe()}}"/>
+              {% endif %}
                 <img src="/images?key={{outer.key.urlsafe()}}" />
                 <button><a href="/delete?item={{outer.key.urlsafe()}}">Delete</button>
             </div>
@@ -39,7 +58,11 @@
           <p class="bottoms">Bottoms</p>
             {% for bottom in bottoms %}
             <div>
-              <input id="checked" type="checkbox" name="checked{{bottom.key.urlsafe()}}"/>
+              {% if outfit and bottom.key in outfit.clothes_key %}
+                <input id="checked" type="checkbox" name="checked{{bottom.key.urlsafe()}}" checked/>
+              {% else %}
+                <input id="checked" type="checkbox" name="checked{{bottom.key.urlsafe()}}"/>
+              {% endif %}
               <img src="/images?key={{bottom.key.urlsafe()}}" />
               <button><a href="/delete?item={{bottom.key.urlsafe()}}">Delete</button>
             </div>
@@ -47,7 +70,11 @@
           <p class="accessory">Accessories</p>
             {% for access in accessory %}
             <div>
-              <input id="checked" type="checkbox" name="checked{{access.key.urlsafe()}}"/>
+              {% if outfit and access.key in outfit.clothes_key %}
+                <input id="checked" type="checkbox" name="checked{{access.key.urlsafe()}}" checked/>
+              {% else %}
+                <input id="checked" type="checkbox" name="checked{{access.key.urlsafe()}}"/>
+              {% endif %}
               <img src="/images?key={{access.key.urlsafe()}}" />
               <button><a href="/delete?item={{access.key.urlsafe()}}">Delete</button>
             </div>
@@ -55,7 +82,11 @@
           <p class="shoes">Shoes</p>
             {% for shoe in shoes %}
               <div>
-                <input id="checked" type="checkbox" name="checked{{shoe.key.urlsafe()}}"/>
+                {% if outfit and shoe.key in outfit.clothes_key %}
+                  <input id="checked" type="checkbox" name="checked{{shoe.key.urlsafe()}}" checked/>
+                {% else %}
+                  <input id="checked" type="checkbox" name="checked{{shoe.key.urlsafe()}}"/>
+                {% endif %}
                 <img src="/images?key={{shoe.key.urlsafe()}}" />
                 <button><a href="/delete?item={{shoe.key.urlsafe()}}">Delete</button>
               </div>

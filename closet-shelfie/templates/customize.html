@@ -25,10 +25,8 @@
               <div>
                 <input id="checked" type="checkbox" name="checked{{top.key.urlsafe()}}"/>
                 <img id="top" src="/images?key={{top.key.urlsafe()}}" />
-                <a href="/delete?item={{top.key.urlsafe()}}">Delete</button>
+                <button><a href="/delete?item={{bottom.key.urlsafe()}}">Delete</button>
               </div>
-              <input type="checkbox" name="checked{{top.key.urlsafe()}}"/>
-              <img src="/images?key={{top.key.urlsafe()}}" />
             {% endfor %}
           </ul>
 
@@ -37,7 +35,7 @@
             <div>
                 <input id="checked" type="checkbox" name="checked{{outer.key.urlsafe()}}"/>
                 <img src="/images?key={{outer.key.urlsafe()}}" />
-                <a href="/delete?item={{outer.key.urlsafe()}}">Delete</button>
+                <button><a href="/delete?item={{bottom.key.urlsafe()}}">Delete</button>
             </div>
             {% endfor %}
           <p class="bottoms">Bottoms</p>
@@ -45,7 +43,7 @@
             <div>
               <input id="checked" type="checkbox" name="checked{{bottom.key.urlsafe()}}"/>
               <img src="/images?key={{bottom.key.urlsafe()}}" />
-              <a href="/delete?item={{bottom.key.urlsafe()}}">Delete</button>
+              <button><a href="/delete?item={{bottom.key.urlsafe()}}">Delete</button>
             </div>
             {% endfor %}
           <p class="accessory">Accessories</p>
@@ -53,7 +51,7 @@
             <div>
               <input id="checked" type="checkbox" name="checked{{access.key.urlsafe()}}"/>
               <img src="/images?key={{access.key.urlsafe()}}" />
-              <button id="delete" type="button" onclick="{{access.key.delete()}}">Delete</button>
+              <button><a href="/delete?item={{bottom.key.urlsafe()}}">Delete</button>
             </div>
             {% endfor %}
           <p class="shoes">Shoes</p>
@@ -61,7 +59,7 @@
               <div>
                 <input id="checked" type="checkbox" name="checked{{shoe.key.urlsafe()}}"/>
                 <img src="/images?key={{shoe.key.urlsafe()}}" />
-                <button id="delete" type="button" onclick="{{shoe.key.delete()}}">Delete</button>
+                <button><a href="/delete?item={{bottom.key.urlsafe()}}">Delete</button>
               </div>
             {% endfor %}</br>
           <button type="submit" id="submit" value= "Save Outfit"><strong>Save Outfit</strong></button>

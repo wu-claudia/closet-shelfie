@@ -17,7 +17,11 @@
       {% for outfit_key in outfit_to_clothes %}
         {% for x in outfit_to_clothes[outfit_key]|sort(attribute='part') %}
           ''<img src="images?key={{x.key.urlsafe()}}">
+        <div class="column">
+        {% for x in outfit_to_clothes[outfit_key] %}
+          <img src="images?key={{x.key.urlsafe()}}">
         {% endfor %}
+        </div>
       {% endfor %}
     </section>
   </body>

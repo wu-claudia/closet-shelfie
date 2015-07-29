@@ -18,10 +18,12 @@
         <h4 class="my_closet">My Closet</h4>
         <p class="tops">Tops</p>
         <form action="" method="post">
+            <a class="paging back" href="#back">Back</a>
             {% for top in tops %}
               <input type="checkbox" name="checked{{top.key.urlsafe()}}"/>
               <img src="/images?key={{top.key.urlsafe()}}" />
             {% endfor %}
+            <a class="paging next" href="#next">Next</a>
           <p class="outerwear">Outerwear</p>
             {% for outer in outerwear %}
                 <input type="checkbox" name="checked{{outer.key.urlsafe()}}"/>

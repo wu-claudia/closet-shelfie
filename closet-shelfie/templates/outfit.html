@@ -17,7 +17,7 @@
       {% for outfit_key in outfit_to_clothes %}
         <div class="column">
           <a href= '/outfit?edit={{outfit_key.urlsafe()}}'>Edit</a>
-        {% for x in outfit_to_clothes[outfit_key]|sort(attribute='part') %}
+        {% for x in outfit_to_clothes[outfit_key] %}
           <img src="images?key={{x.key.urlsafe()}}">
         {% endfor %}
         </div>

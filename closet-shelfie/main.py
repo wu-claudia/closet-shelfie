@@ -112,6 +112,51 @@ class ImageHandler(webapp2.RequestHandler):
         else:
             self.redirect('/static/noimage.jpg')
 
+class DeleteHandler(webapp2.RequestHandler):
+     def get(self):
+        #  template=env.get_template('customize.html')
+        #  delete_key=ndb.Key(urlsafe=self.request.get('delete'))
+        #  delete_key.delete()
+         #
+        #  clothes=Clothes.query().fetch()
+        #  variables={'clothes':clothes}
+        #  self.response.write(template.render(variables))
+
+        clothes_key_urlsafe=self.request.get('item')
+        clothes_key=ndb.Key(urlsafe=clothes_key_urlsafe)
+        clothes_obj=clothes_key.get()
+        clothes_key.delete()
+
+        outfits_with_clothes=Outfit.query(Outfit.clothes_key == clothes_key).fetch()
+        for outfit in outfits_with_clothes:
+            outfit.key.delete()
+
+        user=users.get_current_user()
+        user_id = user.user_id()
+        user_key = ndb.Key(User, user_id)
+        user_clothes = Clothes.query(Clothes.user_key==user_key).fetch()
+
+        tops=[]
+        bottoms=[]
+        outerwear=[]
+        accessory=[]
+        shoes=[]
+
+        for x in user_clothes:
+            if x.part == "Top":
+                tops.append(x)
+            elif x.part == "Bottom":
+                bottoms.append(x)
+            elif x.part == "Accessory":
+                accessory.append(x)
+            elif x.part == "Outerwear":
+                outerwear.append(x)
+            else:
+                shoes.append(x)
+        template=env.get_template('customize.html')
+        variables={'tops':tops, 'bottoms':bottoms,'outerwear':outerwear,'accessory':accessory,'shoes':shoes}
+        self.response.write(template.render(variables))
+
 class UploadHandler(webapp2.RequestHandler):
     def get(self):
         template=env.get_template('upload.html')
@@ -119,11 +164,16 @@ class UploadHandler(webapp2.RequestHandler):
 
     def post(self):
         user_id = users.get_current_user().user_id()
-        imagedata = Clothes(color=self.request.get('color'),
-                            file_name=str(self.request.get('name')),
-                            part=self.request.get('part'),
-                            image=self.request.get('image'),
-                            user_key=ndb.Key(User, user_id))
+        color=self.request.get('color')
+        file_name=str(self.request.get('name'))
+        part=self.request.get('part')
+        image=self.request.get('image')
+        user_key=ndb.Key(User, user_id)
+        imagedata = Clothes(color=color,
+                            file_name=file_name,
+                            part=part,
+                            image=image,
+                            user_key=user_key)
         imagedata.put()
         return self.redirect('/upload')
 
@@ -163,5 +213,6 @@ app = webapp2.WSGIApplication([
     ('/outfit', OutfitHandler),
     ('/calendar', CalendarHandler),
     ('/about', AboutHandler),
-    ('/images', ImageHandler)
+    ('/images', ImageHandler),
+    ('/delete', DeleteHandler)
 ], debug=True)

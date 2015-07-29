@@ -78,7 +78,7 @@ class CustomizeHandler(webapp2.RequestHandler):
             elif x.part == "Bottom":
                 bottoms.append(x)
             elif x.part == "Accessory":
-                accesory.append(x)
+                accessory.append(x)
             elif x.part == "Outerwear":
                 outerwear.append(x)
             else:

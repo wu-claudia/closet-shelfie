@@ -12,15 +12,17 @@
     <a href= '/calendar'>Reminders</a>
   </header>
   <body>
-    <h1><strong><a href= '/outfit'>Edit</strong></h1></a>
     <section id="outfit">
+      <form method="post" action="">
       {% for outfit_key in outfit_to_clothes %}
         <div class="column">
+          <a href= '/outfit?edit={{outfit_key.urlsafe()}}'>Edit</a>
         {% for x in outfit_to_clothes[outfit_key]|sort(attribute='part') %}
           <img src="images?key={{x.key.urlsafe()}}">
         {% endfor %}
         </div>
       {% endfor %}
+      </form>
     </section>
   </body>
 </html>

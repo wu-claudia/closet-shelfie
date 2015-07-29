@@ -143,6 +143,9 @@ class OutfitHandler(webapp2.RequestHandler):
         variables = {'outfit_to_clothes':outfit_to_clothes}
         self.response.write(template.render(variables))
 
+    def post(self):
+        self.redirect("/outfit?edit={{outfit.key.urlsafe()}}")
+
 class CalendarHandler(webapp2.RequestHandler):
     def get(self):
         user=users.get_current_user()

@@ -2,10 +2,10 @@
   <head>
     <title>My Closet</title>
   </head>
-    <link href="../static/customize.css" rel="stylesheet" />
+    <link href="static/customize.css" rel="stylesheet" />
   <body>
     <header>
-      <a href= '/'><img src="../static/title.png" alt="Logo Pic"></a></br>
+      <a href= '/'><img src="static/title.png" alt="Logo Pic"></a></br>
       <a id="about" href= '/about'>About</a>
       <a href= '/custom'>My Closet</a>
       <a href= '/outfit'>My Outfits</a>
@@ -18,37 +18,57 @@
         <h4 class="my_closet">My Closet</h4>
         <p class="tops">Tops</p>
         <form action="" method="post">
-            <a class="paging back" href="#back">Back</a>
+          <ul class="pagination">
+            <a href="/custom/?page{{previous_page_number}}">Back</a>
+            <a class="/custom/?page{{next}}" href="#next">Next</a>
             {% for top in tops %}
-              <input id="checked" type="checkbox" name="checked{{top.key.urlsafe()}}"/>
-              <img src="/images?key={{top.key.urlsafe()}}" />
+              <!-- <li> -->
+              <div>
+                <input id="checked" type="checkbox" name="checked{{top.key.urlsafe()}}"/>
+                <img id="top" src="/images?key={{top.key.urlsafe()}}" />
+                <button id="delete" type="button" name="checked{{top.key.urlsafe()}}">Delete</button>
+              </div>
+              <!-- </li> -->
             {% endfor %}
-            <a class="paging next" href="#next">Next</a>
+          </ul>
+
           <p class="outerwear">Outerwear</p>
             {% for outer in outerwear %}
-                <input type="checkbox" name="checked{{outer.key.urlsafe()}}"/>
+            <div>
+                <input id="checked" type="checkbox" name="checked{{outer.key.urlsafe()}}"/>
                 <img src="/images?key={{outer.key.urlsafe()}}" />
+                <button id="delete" type="button" formaction="{{outer.key.delete()}}">Delete</button>
+            </div>
             {% endfor %}
           <p class="bottoms">Bottoms</p>
             {% for bottom in bottoms %}
-              <input type="checkbox" name="checked{{bottom.key.urlsafe()}}"/>
+            <div>
+              <input id="checked" type="checkbox" name="checked{{bottom.key.urlsafe()}}"/>
               <img src="/images?key={{bottom.key.urlsafe()}}" />
+              <button id="delete" type="button" name="checked{{bottom.key.urlsafe()}}">Delete</button>
+            </div>
             {% endfor %}
           <p class="accessory">Accessories</p>
             {% for access in accessory %}
-              <input type="checkbox" name="checked{{access.key.urlsafe()}}"/>
+            <div>
+              <input id="checked" type="checkbox" name="checked{{access.key.urlsafe()}}"/>
               <img src="/images?key={{access.key.urlsafe()}}" />
+              <button id="delete" type="button" onclick="{{access.key.delete()}}">Delete</button>
+            </div>
             {% endfor %}
           <p class="shoes">Shoes</p>
             {% for shoe in shoes %}
-                <input type="checkbox" name="checked{{shoe.key.urlsafe()}}"/>
+              <div>
+                <input id="checked" type="checkbox" name="checked{{shoe.key.urlsafe()}}"/>
                 <img src="/images?key={{shoe.key.urlsafe()}}" />
+                <button id="delete" type="button" onclick="{{shoe.key.delete()}}">Delete</button>
+              </div>
             {% endfor %}</br>
           <button type="submit" id="submit" value= "Save Outfit"><strong>Save Outfit</strong></button>
         </form>
       </section>
-    <div>
 
   </body>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="static/customize.js"></script>
 </hmtl>

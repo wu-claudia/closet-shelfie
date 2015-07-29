@@ -40,7 +40,7 @@ body {
 strong{
   font-family: 'Yanone Kaffeesatz', sans-serif;
   font-weight: 200;
-  text-align: left;
+  text-align: center;
   background-color: rgba(255, 255, 255, 0.70);
   margin: 1375px;
   padding: 20px;
@@ -52,15 +52,26 @@ strong{
     text-align: center bottom;
     font-size: 35px;
 }
-#outfit{
-  width:200px;
+/*section{
+  width:300px;
   padding: 20px;
   background-color: rgba(255, 255, 255, 0.90);
   border-radius: 3%;
-}
+  margin-left: 20px;
+}*/
 
 section img{
   width:200px;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.column{
+  width:20%;
+  float:left;
+  background-color: rgba(255, 255, 255, 0.60);
+  border-radius: 3%;
+  margin-left: 20px;
 }

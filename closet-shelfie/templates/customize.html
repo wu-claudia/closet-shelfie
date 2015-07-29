@@ -19,7 +19,7 @@
         <p class="tops">Tops</p>
         <form action="" method="post">
             {% for top in tops %}
-              <input id="checked" type="checkbox" name="checked{{top.key.urlsafe()}}"/>
+              <input type="checkbox" name="checked{{top.key.urlsafe()}}"/>
               <img src="/images?key={{top.key.urlsafe()}}" />
             {% endfor %}
           <p class="outerwear">Outerwear</p>

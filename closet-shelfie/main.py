@@ -25,8 +25,8 @@ import random
 env=jinja2.Environment(loader=jinja2.FileSystemLoader('templates'))
 
 class User(ndb.Model):
-#     #email=ndb.EmailProperty(required=True)
-     reminder=ndb.BooleanProperty()
+     name=ndb.StringProperty(required=True)
+     phone_num=ndb.StringProperty(required=True)
 
 class Clothes(ndb.Model):
     color=ndb.StringProperty(required=True)
@@ -57,6 +57,7 @@ class HomeHandler(webapp2.RequestHandler):
         variables = {'user':user}
         self.response.write(template.render(variables))
         logout_url = users.create_logout_url('/home')
+
         self.response.write('<b><p><a href="%s" id="log">Log Out</a></p></b>' % logout_url)
         if user is None:
             self.redirect('/')

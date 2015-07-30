@@ -35,6 +35,7 @@
           <div><a href="#shoe">Shoes</a></div>
           <a href="/custom?randomized=True">Randomizer</a>
           Filter by color: <select class="filterby" name='color' id="color">
+              <option value="All">All</option>
               <option value="Red">Red</option>
               <option value="Orange">Orange</option>
               <option value="Yellow">Yellow</option>
@@ -50,7 +51,7 @@
             </select>
           <a name="tops"><p class="tops">Tops</p></a>
             {% for top in tops %}
-              <div class="{{top.color}}">
+              <div class="All {{top.color}}">
                 {% if outfit and top.key in outfit.clothes_key %}
                   <input id="checked" type="checkbox" name="checked{{top.key.urlsafe()}}" checked/>
                 {% elif random_button and top.key == random_top.key %}

@@ -12,7 +12,7 @@ $(document).ready(function(){
       var value = $(this).val();
       // var last3chars = value.substring(value.length - 3);
   $("div[class]").hide();
-      $('div[class="value"]').show();
+      $('div[class='value']').show();
   });
 
 

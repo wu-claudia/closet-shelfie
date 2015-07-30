@@ -30,9 +30,23 @@
           method="post">
           <!-- <input type="button" name="randomized" value="Randomizer"> -->
           <a href="/custom?randomized=True">Randomizer</a>
+          Filter by color: <select class="filterby" name='color'>
+              <option value="Red">Red</option>
+              <option value="Orange">Orange</option>
+              <option value="Yellow">Yellow</option>
+              <option value="Green">Green</option>
+              <option value="Blue">Blue</option>
+              <option value="Purple">Purple</option>
+              <option value="Silver">Silver</option>
+              <option value="Gold">Gold</option>
+              <option value="Gray">Gray</option>
+              <option value="White">White</option>
+              <option value="Black">Black</option>
+              <option value="Other">Other</option>
+            </select>
           <p class="tops">Tops</p>
             {% for top in tops %}
-              <div>
+              <div class="{{top.color}}">
                 {% if outfit and top.key in outfit.clothes_key %}
                   <input id="checked" type="checkbox" name="checked{{top.key.urlsafe()}}" checked/>
                 {% elif random_button and top.key == random_top.key %}
@@ -106,7 +120,9 @@
         </form>
       </section>
 
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+      <script src="static/customize.js"></script>
   </body>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="static/customize.js"></script>
 </hmtl>
+
+<!-- ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js -->

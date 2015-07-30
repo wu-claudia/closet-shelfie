@@ -1,7 +1,10 @@
 $(document).ready(function(){
 
-  $(my_outfit).click(function(){
-    $(.my_outfit).fadeout();
+  $("#top").hover(function(){
+    $(this).animate(
+      {opacity:0.5},
+    10
+    );
   });
 
   $("select.filterby").change(function(){

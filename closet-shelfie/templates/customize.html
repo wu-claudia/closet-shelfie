@@ -3,7 +3,7 @@
     <title>My Closet</title>
   </head>
     <link href="static/customize.css" rel="stylesheet" />
-  <body>
+
     <header>
       <a href= '/'><img src="static/title.png" alt="Logo Pic"></a></br>
       <a id="about" href= '/about'>About</a>
@@ -12,7 +12,7 @@
       <a href= '/upload'>Upload</a>
       <a href= '/calendar'>Reminders</a>
     </header>
-
+  <body>
     <div id="right">
       <section>
         {% if outfit %}
@@ -20,7 +20,7 @@
         {% else %}
           <h4 class="my_closet">My Closet</h4>
         {% endif %}
-        <p class="tops">Tops</p>
+
         <form
           {% if outfit %}
             action="/custom?outfit={{outfit.key.urlsafe()}}"
@@ -28,8 +28,8 @@
             action="/custom"
           {% endif %}
           method="post">
-
-          <ul class="pagination">
+          
+          <p class="tops">Tops</p>
             {% for top in tops %}
               <div>
                 {% if outfit and top.key in outfit.clothes_key %}
@@ -38,10 +38,9 @@
                   <input id="checked" type="checkbox" name="checked{{top.key.urlsafe()}}"/>
                 {% endif %}
                 <img id="top" src="/images?key={{top.key.urlsafe()}}" />
-                <button><a href="/delete?item={{top.key.urlsafe()}}">Delete</button>
+                <button id="delete"><a href="/delete?item={{top.key.urlsafe()}}">Delete</button>
               </div>
             {% endfor %}
-          </ul>
 
           <p class="outerwear">Outerwear</p>
             {% for outer in outerwear %}
@@ -55,6 +54,7 @@
                 <button><a href="/delete?item={{outer.key.urlsafe()}}">Delete</button>
             </div>
             {% endfor %}
+
           <p class="bottoms">Bottoms</p>
             {% for bottom in bottoms %}
             <div>

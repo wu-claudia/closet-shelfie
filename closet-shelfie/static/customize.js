@@ -8,12 +8,12 @@ $(document).ready(function(){
   });
 
 
-  // $("#color").change(function() {
-  //     var value = $(this).val();
-  //     // var last3chars = value.substring(value.length - 3);
-  // $("div[class]").hide();
-  //     $('div[class='value']').show();
-  // });
+  $("#color").change(function() {
+      var value = $(this).val();
+      // var last3chars = value.substring(value.length - 3);
+  $("div[class]").hide();
+      $("div[class]").show();
+  });
 
   $(".item button[name=delete]").click(function(){
     console.log($(this).val());

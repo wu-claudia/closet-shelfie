@@ -15,7 +15,7 @@
   <body>
     <form name = "input" action = "/upload" method = "post" enctype="multipart/form-data">
       <div>Name: <input type = "text" name = "name"></div>
-      Color: <select name='color'>
+    <div>Color: <select name='color'>
         <option value="Red">Red</option>
         <option value="Orange">Orange</option>
         <option value="Yellow">Yellow</option>
@@ -28,14 +28,14 @@
         <option value="White">White</option>
         <option value="Black">Black</option>
         <option value="Other">Other</option>
-      </select>
-      Part: <select name='part'>
+      </select></div>
+      <div>Part: <select name='part'>
         <option value="aTop">Top</option>
         <option value="cBottom">Bottom</option>
         <option value="bOuterwear">Outerwear</option>
         <option value="Accessory">Accessory</option>
         <option value="Shoes">Shoes</option>
-      </select>
+      </select></div>
       <div>Image: <input type = "file" name = "image">
       <button>Upload Picture</button></div>
     </form>

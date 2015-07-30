@@ -15,7 +15,7 @@ $(document).ready(function(){
   //     $('div[class='value']').show();
   // });
 
-  $("button[name=delete]").click(function(){
+  $(".item button[name=delete]").click(function(){
     console.log($(this).val());
     $(this).parents(".item").fadeOut(
       1000

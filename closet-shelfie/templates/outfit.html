@@ -15,16 +15,18 @@
     <section id="outfit">
       <form method="post" action="">
       {% for outfit_key in outfit_to_clothes %}
-        <div class="column">
+        <div class="combo column">
           <button type="button"><a href= '/custom?outfit={{outfit_key.urlsafe()}}'>Edit Outfit</a></button></br>
           {% for x in outfit_to_clothes[outfit_key]| sort(attribute='part')%}
             <img src="/images?key={{x.key.urlsafe()}}">
           {% endfor %}
         </br>
-          <button type="button"><a href="/delete?combo={{outfit_key.urlsafe()}}">Delete Outfit</a></button>
+          <button type="button" name="delete" value="{{outfit_key.urlsafe()}}">Delete</button>
         </div>
       {% endfor %}
       </form>
     </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script src="static/outfit.js"></script>
   </body>
 </html>

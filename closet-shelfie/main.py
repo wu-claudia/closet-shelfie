@@ -153,7 +153,7 @@ class ImageHandler(webapp2.RequestHandler):
             self.redirect('/static/noimage.jpg')
 
 class DeleteClothesHandler(webapp2.RequestHandler):
-     def get(self):
+     def post(self):
         clothes_key_urlsafe=self.request.get('item')
         outfit_key_urlsafe=self.request.get('combo')
         outfit_key=ndb.Key(urlsafe=outfit_key_urlsafe)

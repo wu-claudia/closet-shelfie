@@ -28,11 +28,11 @@
             action="/custom"
           {% endif %}
           method="post">
-          <div><a href="#tops">Tops</a></div>
-          <div><a href="#bottoms">Bottoms</a></div>
-          <div><a href="#outerwear">Outerwear</a></div>
-          <div><a href="#accessory">Accessories</a></div>
-          <div><a href="#shoes">Shoes</a></div>
+          <h2><a href="#tops">Tops</a></h2>
+          <h2><a href="#bottoms">Bottoms</a></h2>
+          <h2><a href="#outerwear">Outerwear</a></h2>
+          <h2><a href="#accessory">Accessories</a></h2>
+          <h2><a href="#shoes">Shoes</a></h2>
           <a href="/custom?randomized=True">Randomizer</a>
           Filter by color: <select class="filterby" name='color' id="color">
               <option value="All">All</option>
@@ -60,7 +60,7 @@
                   <input id="checked" type="checkbox" name="checked{{top.key.urlsafe()}}"/>
                 {% endif %}
                 <img id="top" src="/images?key={{top.key.urlsafe()}}" />
-                <button id="delete"><a href="/delete?item={{top.key.urlsafe()}}">Delete</a></button>
+                <button type="button" name="delete" value="delete{{top.key.urlsafe()}}"></button>
               </div>
             {% endfor %}
             <p></p>

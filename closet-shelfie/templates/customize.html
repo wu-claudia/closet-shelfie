@@ -28,7 +28,8 @@
             action="/custom"
           {% endif %}
           method="post">
-          <input type="button" name="randomized" value="Randomizer">
+          <!-- <input type="button" name="randomized" value="Randomizer"> -->
+          <a href="/custom?randomized=True">Randomizer</a>
           <p class="tops">Tops</p>
             {% for top in tops %}
               <div>
@@ -49,7 +50,7 @@
             <div>
               {% if outfit and outer.key in outfit.clothes_key %}
                 <input id="checked" type="checkbox" name="checked{{outer.key.urlsafe()}}" checked/>
-              {% elif random_button and top.key == random_top.key %}
+              {% elif random_button and outer.key == random_outer.key %}
                 <input id="checked" type="checkbox" name="checked{{outer.key.urlsafe()}}" checked/>
               {% else %}
                 <input id="checked" type="checkbox" name="checked{{outer.key.urlsafe()}}"/>
@@ -64,7 +65,7 @@
             <div>
               {% if outfit and bottom.key in outfit.clothes_key %}
                 <input id="checked" type="checkbox" name="checked{{bottom.key.urlsafe()}}" checked/>
-              {% elif random_button and top.key == random_top.key %}
+              {% elif random_button and bottom.key == random_bottom.key %}
                   <input id="checked" type="checkbox" name="checked{{bottom.key.urlsafe()}}" checked/>
               {% else %}
                 <input id="checked" type="checkbox" name="checked{{bottom.key.urlsafe()}}"/>
@@ -78,7 +79,7 @@
             <div>
               {% if outfit and access.key in outfit.clothes_key %}
                 <input id="checked" type="checkbox" name="checked{{access.key.urlsafe()}}" checked/>
-              {% elif random_button and top.key == random_top.key %}
+              {% elif random_button and access.key == random_accessory.key %}
                 <input id="checked" type="checkbox" name="checked{{access.key.urlsafe()}}" checked/>
               {% else %}
                 <input id="checked" type="checkbox" name="checked{{access.key.urlsafe()}}"/>
@@ -92,7 +93,7 @@
               <div>
                 {% if outfit and shoe.key in outfit.clothes_key %}
                   <input id="checked" type="checkbox" name="checked{{shoe.key.urlsafe()}}" checked/>
-                {% elif random_button and top.key == random_top.key %}
+                {% elif random_button and shoe.key == random_shoe.key %}
                   <input id="checked" type="checkbox" name="checked{{shoe.key.urlsafe()}}" checked/>
                 {% else %}
                   <input id="checked" type="checkbox" name="checked{{shoe.key.urlsafe()}}"/>

@@ -102,13 +102,13 @@ class CustomizeHandler(webapp2.RequestHandler):
         if random_button == True:
             if tops:
                 random_top=random.choice(tops)
-            elif bottoms:
+            if bottoms:
                 random_bottom=random.choice(bottoms)
-            elif outerwear:
+            if outerwear:
                 random_outer=random.choice(outerwear)
-            elif accessory:
+            if accessory:
                 random_accessory=random.choice(accessory)
-            elif shoes:
+            if shoes:
                 random_shoe=random.choice(shoes)
         template=env.get_template('customize.html')
         variables={'tops':tops, 'bottoms':bottoms,'outerwear':outerwear,'accessory':accessory,'shoes':shoes, 'outfit':outfit,

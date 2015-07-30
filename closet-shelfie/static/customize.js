@@ -8,11 +8,19 @@ $(document).ready(function(){
   });
 
 
-  $("#color").change(function() {
-      var value = $(this).val();
-      // var last3chars = value.substring(value.length - 3);
-  $("div[class]").hide();
-      $('div[class='value']').show();
+  // $("#color").change(function() {
+  //     var value = $(this).val();
+  //     // var last3chars = value.substring(value.length - 3);
+  // $("div[class]").hide();
+  //     $('div[class='value']').show();
+  // });
+
+  $("button[name=delete]").click(function(){
+    console.log($(this).val());
+    $(this).parents(".item").fadeOut(
+      1000
+    );
+    $.post( "/delete", { item: $(this).val()} );
   });
 
 

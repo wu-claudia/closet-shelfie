@@ -51,7 +51,7 @@
             </select>
           <a name="tops"><p class="tops">Tops</p></a>
             {% for top in tops %}
-              <div class="All {{top.color}}">
+              <div class="All item {{top.color}}">
                 {% if outfit and top.key in outfit.clothes_key %}
                   <input id="checked" type="checkbox" name="checked{{top.key.urlsafe()}}" checked/>
                 {% elif random_button and top.key == random_top.key %}
@@ -60,7 +60,7 @@
                   <input id="checked" type="checkbox" name="checked{{top.key.urlsafe()}}"/>
                 {% endif %}
                 <img id="top" src="/images?key={{top.key.urlsafe()}}" />
-                <button type="button" name="delete" value="delete{{top.key.urlsafe()}}"></button>
+                <button type="button" name="delete" value="{{top.key.urlsafe()}}">Delete</button>
               </div>
             {% endfor %}
             <p></p>
@@ -75,7 +75,7 @@
                 <input type="checkbox" name="checked{{outer.key.urlsafe()}}"/>
               {% endif %}
                 <img src="/images?key={{outer.key.urlsafe()}}" />
-                <button><a href="/delete?item={{outer.key.urlsafe()}}">Delete</a></button>
+                <button type="button" name="delete" value="{{outer.key.urlsafe()}}">Delete</button>
             </div>
             {% endfor %}
             <p></p>
@@ -91,7 +91,7 @@
                 <input type="checkbox" name="checked{{bottom.key.urlsafe()}}"/>
               {% endif %}
               <img src="/images?key={{bottom.key.urlsafe()}}" />
-              <button><a href="/delete?item={{bottom.key.urlsafe()}}">Delete</a></button>
+              <button type="button" name="delete" value="{{bottom.key.urlsafe()}}">Delete</button>
             </div>
             {% endfor %}
             <p></p>
@@ -106,7 +106,7 @@
                 <input type="checkbox" name="checked{{access.key.urlsafe()}}"/>
               {% endif %}
               <img src="/images?key={{access.key.urlsafe()}}" />
-              <button><a href="/delete?item={{access.key.urlsafe()}}">Delete</a></button>
+              <button type="button" name="delete" value="{{access.key.urlsafe()}}">Delete</button>
             </div>
             {% endfor %}
             <p></p>
@@ -121,7 +121,7 @@
                   <input type="checkbox" name="checked{{shoe.key.urlsafe()}}"/>
                 {% endif %}
                 <img src="/images?key={{shoe.key.urlsafe()}}" />
-                <button><a href="/delete?item={{shoe.key.urlsafe()}}">Delete</a></button>
+                <button type="button" name="delete" value="{{shoe.key.urlsafe()}}">Delete</button>
               </div>
             {% endfor %}
           <p><button type="submit" id="submit" value= "Save Outfit"><strong>Save Outfit</strong></button></p>

@@ -8,14 +8,13 @@ $(document).ready(function(){
   });
 
 
-  $(function(){
-  $("#color").bind("change", function() {
-      var value = $(this).find("option:selected").val();
+  $("#color").change(function() {
+      var value = $(this).val();
       // var last3chars = value.substring(value.length - 3);
   $("div[class]").hide();
-      $(".class_" + value).show();
+      $('div[class="value"]').show();
   });
-  });
+
 
   // $("#color").change(function(e){
   //   $.map($('div.access.color'), function(e){$('.'+e.value).hide(); });

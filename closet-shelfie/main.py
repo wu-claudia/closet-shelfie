@@ -131,15 +131,23 @@ class ImageHandler(webapp2.RequestHandler):
 class DeleteClothesHandler(webapp2.RequestHandler):
      def get(self):
         clothes_key_urlsafe=self.request.get('item')
-        clothes_key=ndb.Key(urlsafe=clothes_key_urlsafe)
-        clothes_obj=clothes_key.get()
-        clothes_key.delete()
+        outfit_key_urlsafe=self.request.get('combo')
+        outfit_key=ndb.Key(urlsafe=outfit_key_urlsafe)
+        outfit=outfit_key.get()
 
-        outfits_with_clothes=Outfit.query(Outfit.clothes_key == clothes_key).fetch()
-        for outfit in outfits_with_clothes:
+        if clothes_key_urlsafe:
+            clothes_key=ndb.Key(urlsafe=clothes_key_urlsafe)
+            clothes_obj=clothes_key.get()
+            clothes_key.delete()
+
+            outfits_with_clothes=Outfit.query(Outfit.clothes_key == clothes_key).fetch()
+            for outfit in outfits_with_clothes:
+                outfit.key.delete()
+
+            self.redirect('/custom')
+        elif outfit_key_urlsafe:
             outfit.key.delete()
-
-        self.redirect('/custom')
+            self.redirect('/outfit')
 
 class UploadHandler(webapp2.RequestHandler):
     def get(self):
@@ -173,6 +181,7 @@ class OutfitHandler(webapp2.RequestHandler):
             outfit_to_clothes[outfit.key] = []
             for x in outfit.clothes_key:
                 outfit_to_clothes[outfit.key].append(x.get())
+
         template=env.get_template('outfit.html')
         variables = {'outfit_to_clothes':outfit_to_clothes}
         self.response.write(template.render(variables))

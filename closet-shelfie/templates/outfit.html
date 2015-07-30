@@ -20,7 +20,7 @@
           {% for x in outfit_to_clothes[outfit_key]| sort(attribute='part')%}
             <img src="/images?key={{x.key.urlsafe()}}">
           {% endfor %}
-          <button type="button"><a href="/delete?item={{outfit.key.urlsafe()}}">Delete Outfit</a></button>
+          <button type="button"><a href="/delete?combo={{outfit_key.urlsafe()}}">Delete Outfit</a></button>
         </div>
       {% endfor %}
       </form>

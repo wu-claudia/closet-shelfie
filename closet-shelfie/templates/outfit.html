@@ -16,7 +16,7 @@
       <form method="post" action="">
       {% for outfit_key in outfit_to_clothes %}
         <div class="column">
-          <button type="button"><a href= '/custom?outfit={{outfit_key.urlsafe()}}'>Edit Outfit</a></button>
+          <button type="button"><a href= '/custom?outfit={{outfit_key.urlsafe()}}'>Edit Outfit</a></button></br>
           {% for x in outfit_to_clothes[outfit_key]| sort(attribute='part')%}
             <img src="/images?key={{x.key.urlsafe()}}">
           {% endfor %}

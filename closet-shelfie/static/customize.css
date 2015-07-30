@@ -137,8 +137,12 @@ div{
 }
 
 button{
-  width:125px;
-  background-color: rgba(255, 255, 255, 0);
-  border: none;
+  background-color: rgba(255, 255, 255, 0.9);
   text-align: center;
+}
+
+button a{
+  padding: 5px;
+  font-size: 20px;
+  margin-right: 0px;
 }

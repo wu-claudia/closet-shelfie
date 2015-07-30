@@ -7,11 +7,11 @@ $(document).ready(function(){
     );
   });
 
-  $("select.filterby").change(function(){
-    var filters = $.map($("select.filterby").toArray(),function(e){
-      return $(e).val();
-    }).join(".");
-    $("div#FilterContainer").find("div").hide();
-    $("div#FilterContainer").find("div." + filters).show();
-  });
+  $("#color").change(function(e){
+    $.map($('div.access.color'), function(e){$('.'+e.value).hide(); });
+    $('.'+$('div.access.color').val()).show()
+    });
+  //   $("div#FilterContainer").find("div").hide();
+  //   $("div#FilterContainer").find("div." + filters).show();
+  // });
 });

@@ -156,8 +156,6 @@ class DeleteClothesHandler(webapp2.RequestHandler):
      def post(self):
         clothes_key_urlsafe=self.request.get('item')
         outfit_key_urlsafe=self.request.get('combo')
-        outfit_key=ndb.Key(urlsafe=outfit_key_urlsafe)
-        outfit=outfit_key.get()
 
         if clothes_key_urlsafe:
             clothes_key=ndb.Key(urlsafe=clothes_key_urlsafe)
@@ -170,6 +168,8 @@ class DeleteClothesHandler(webapp2.RequestHandler):
 
             self.redirect('/custom')
         elif outfit_key_urlsafe:
+            outfit_key=ndb.Key(urlsafe=outfit_key_urlsafe)
+            outfit=outfit_key.get()
             outfit.key.delete()
             self.redirect('/outfit')
 

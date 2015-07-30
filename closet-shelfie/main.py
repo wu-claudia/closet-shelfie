@@ -20,6 +20,7 @@ from google.appengine.ext import ndb
 from google.appengine.api import users
 from google.appengine.api import images
 import logging
+import random
 
 env=jinja2.Environment(loader=jinja2.FileSystemLoader('templates'))
 
@@ -90,8 +91,29 @@ class CustomizeHandler(webapp2.RequestHandler):
                 outerwear.append(x)
             else:
                 shoes.append(x)
+
+        random_button=bool(self.request.get('randomized'))
+        logging.error(random_button)
+        random_top=None
+        random_bottom=None
+        random_outer=None
+        random_accessory=None
+        random_shoe=None
+        if random_button == True:
+            if tops:
+                random_top=random.choice(tops)
+            elif bottoms:
+                random_bottom=random.choice(bottoms)
+            elif outerwear:
+                random_outer=random.choice(outerwear)
+            elif accessory:
+                random_accessory=random.choice(accessory)
+            elif shoes:
+                random_shoe=random.choice(shoes)
         template=env.get_template('customize.html')
-        variables={'tops':tops, 'bottoms':bottoms,'outerwear':outerwear,'accessory':accessory,'shoes':shoes, 'outfit':outfit}
+        variables={'tops':tops, 'bottoms':bottoms,'outerwear':outerwear,'accessory':accessory,'shoes':shoes, 'outfit':outfit,
+                    "random_top":random_top, "random_bottom":random_bottom, "random_outer":random_outer,
+                    'random_accessory':random_accessory, "random_shoe":random_shoe, 'random_button':random_button}
         self.response.write(template.render(variables))
 
     def post(self):
@@ -100,6 +122,7 @@ class CustomizeHandler(webapp2.RequestHandler):
         user_id = user.user_id()
         user_key = ndb.Key(User, user_id)
         user_clothes = Clothes.query(Clothes.user_key==user_key).fetch()
+
         for x in user_clothes:
             if self.request.get('checked' + x.key.urlsafe()) == "on":
                 outfit_clothes.append(x.key)

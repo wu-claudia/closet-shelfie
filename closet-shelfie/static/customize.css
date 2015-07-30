@@ -89,6 +89,7 @@ p{
   padding:5px;
   font-size: 35px;
   background-color: rgba(255, 255, 255, 0.8);
+  clear:left;
 }
 
 section img{
@@ -131,7 +132,7 @@ div{
   border-radius: 3%;
   width: 230px;
   height: 350px;
-  margin: 8px;
+  margin: 18px;
   float: left;
 }
 

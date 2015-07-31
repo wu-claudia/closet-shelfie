@@ -63,15 +63,7 @@ h4 {
   padding:20px;
   margin:10px;
   }
-<<<<<<< HEAD
-h6 a{
-  font-family: 'Yanone Kaffeesatz', sans-serif;
-  font-weight: 200;
-  font-size: 15px;
-  padding:20px;
-  margin:10px;
 
-=======
 h5 a{
   font-family: 'Yanone Kaffeesatz', sans-serif;
   font-weight: 200;
@@ -91,8 +83,7 @@ h6 a{
   padding:10px;
   margin:10px;
   background: rgba(245, 245, 245, 0.8);
->>>>>>> 564372d8d58e7242309f44bd7f7c3fcf8519b180
-  }
+}
 
 body{
   font-family: 'Yanone Kaffeesatz', sans-serif;

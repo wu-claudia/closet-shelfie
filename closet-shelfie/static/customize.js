@@ -11,8 +11,14 @@ $(document).ready(function(){
   $("#color").change(function() {
       var value = $(this).val();
       // var last3chars = value.substring(value.length - 3);
-  $("div[class]").hide();
-      $("div[class=value]").show();
+      $("div[class]").hide();
+      $(".item").each(function(i,elem){
+        if ($(elem).hasClass(value)){
+          $(elem).show();
+        }
+        else{
+        }
+      });
   });
 
   $(".item button[name=delete]").click(function(){
